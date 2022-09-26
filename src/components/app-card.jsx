@@ -153,7 +153,6 @@ export function FeaturesCard({
 
                 localStorage.setItem("items", JSON.stringify(newItems2));
                 event.preventDefault();
-                router.push("/cart");
               }}
             >
               Comprar

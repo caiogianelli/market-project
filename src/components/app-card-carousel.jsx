@@ -8,8 +8,8 @@ import {
   Button,
   Tooltip,
 } from "@mantine/core";
+import { IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -53,8 +53,13 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
     height: "50px",
+    gap: "4px",
     display: "flex",
     justifyContent: "space-around",
+  },
+  buttonPrice: {
+    borderRadius: "4px",
+    minWidth: "80px",
   },
 
   icon: {
@@ -76,7 +81,6 @@ export function FeaturesCardCarousel({
   description,
 }) {
   const { classes } = useStyles();
-  const router = useRouter();
 
   return (
     <Link href={`/produtos/${type}/${id}`}>
@@ -101,7 +105,7 @@ export function FeaturesCardCarousel({
         <Card.Section className={classes.priceBuyContainer}>
           <Group spacing={10} mb={10}>
             <div>
-              <Text size="20px" weight={700} sx={{ lineHeight: 1 }}>
+              <Text size="18px" weight={600} sx={{ lineHeight: 1 }}>
                 R$ {price.toFixed(2).toString().replace(".", ",")}
               </Text>
 
@@ -113,9 +117,7 @@ export function FeaturesCardCarousel({
             </div>
 
             <Button
-              radius="xs"
-              size="md"
-              style={{ flex: 1 }}
+              className={classes.buttonPrice}
               onClick={(event) => {
                 let items = localStorage.getItem("items");
 
@@ -149,10 +151,10 @@ export function FeaturesCardCarousel({
 
                 localStorage.setItem("items", JSON.stringify(newItems2));
                 event.preventDefault();
-                router.push("/cart");
               }}
             >
-              Comprar
+              Adicionar
+              {<IconShoppingCartPlus style={{ marginLeft: "10px" }} />}{" "}
             </Button>
           </Group>
         </Card.Section>

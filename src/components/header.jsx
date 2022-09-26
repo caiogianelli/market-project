@@ -4,11 +4,13 @@ import {
   Group,
   Burger,
   Modal,
-  Button,
   Drawer,
+  ActionIcon,
+  Button,
 } from "@mantine/core";
 
 import Link from "next/link";
+import { IconShoppingCart, IconHome, IconLogin } from "@tabler/icons";
 import { useState } from "react";
 import { AuthenticationTitle } from "./create-account/authentication";
 import DarkTheme from "./dark-theme";
@@ -61,22 +63,12 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-const links = [
-  { label: "Home", link: "/" },
-  { label: "Carrinho", link: "/cart" },
-];
 
 export function HeaderSearch() {
   // const [opened, { toggle }] = useDisclosure(false);
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
   const [modal, setModal] = useState(false);
-
-  const items = links.map((link) => (
-    <Link key={link.label} href={link.link}>
-      <a className={classes.link}>{link.label}</a>
-    </Link>
-  ));
 
   return (
     <Header height={56} className={classes.header} mb={0}>
@@ -99,33 +91,44 @@ export function HeaderSearch() {
 
         <Group>
           <SearchAutoComplete />
-          <Group ml={50} spacing={5} className={classes.links}>
-            {items}
-            <>
-              <Modal
-                opened={modal}
-                onClose={() => setModal(false)}
-                title="Criar Conta"
-              >
-                {<AuthenticationTitle />}
-              </Modal>
 
-              <Group position="center">
-                <Button onClick={() => setModal(true)}>Login</Button>
-              </Group>
-              <Group position="center">
-                <DarkTheme />
-              </Group>
-              {/* <Group position="center">
+          <>
+            <Modal
+              opened={modal}
+              onClose={() => setModal(false)}
+              title="Criar Conta"
+            >
+              {<AuthenticationTitle />}
+            </Modal>
+
+            <ActionIcon size={23}>
+              <Link href={"/"}>
+                <IconHome size={34} stroke={1.5} />
+              </Link>
+            </ActionIcon>
+
+            <ActionIcon size={23}>
+              <Link href={"/cart"}>
+                <IconShoppingCart size={34} stroke={1.5} />
+              </Link>
+            </ActionIcon>
+
+            <Button onClick={() => setModal(true)}>
+              {<IconLogin size={23} stroke={1.5} />}Login
+            </Button>
+
+            <Group position="center">
+              <DarkTheme />
+            </Group>
+            {/* <Group position="center">
                 <UserButton
                   image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
                   name="administrador"
                   email="test@email.com"
                 />
               </Group> */}
-              <Group position="center"></Group>
-            </>
-          </Group>
+            <Group position="center"></Group>
+          </>
         </Group>
       </div>
     </Header>

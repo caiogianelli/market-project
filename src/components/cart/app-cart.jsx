@@ -34,7 +34,7 @@ export function AppCart() {
   if (items === null || items.length === 0) {
     return (
       <Container align="center" my={200}>
-        <Text size={60} weight={700} color="#d052028c">
+        <Text size={60} weight={700} color="#d052024a">
           Carrinho Vazio
         </Text>
       </Container>
