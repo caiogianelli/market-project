@@ -4,7 +4,6 @@ import {
   Box,
   Collapse,
   ThemeIcon,
-  Text,
   UnstyledButton,
   createStyles,
 } from "@mantine/core";
@@ -71,14 +70,9 @@ export function LinksGroup({
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
-    <Text
-      component="a"
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-    >
-      {link.label}
-    </Text>
+    <Link key={link.label} href={link.link}>
+      <a className={classes.link}>{link.label}</a>
+    </Link>
   ));
 
   return (
