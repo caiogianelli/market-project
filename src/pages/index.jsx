@@ -27,12 +27,20 @@ export default function Home({ products }) {
             controlSize={40}
             draggable={true}
             align="start"
-            slidesToScroll={5}
+            slidesToScroll={1}
             loop
             withIndicators
+            breakpoints={[
+              { maxWidth: "lg", slideSize: "33%" },
+              { maxWidth: "md", slideSize: "50%" },
+              {
+                maxWidth: "xs",
+                slideSize: "100%",
+              },
+            ]}
           >
             {products.map((product) => (
-              <Carousel.Slide key={product.id} size="20%">
+              <Carousel.Slide key={product.id} size="25%">
                 <FeaturesCardCarousel
                   id={product.id}
                   image={product.img}

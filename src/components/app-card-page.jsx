@@ -9,7 +9,6 @@ import {
   SimpleGrid,
 } from "@mantine/core";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const useStyles = createStyles(() => ({
   card: {
@@ -49,7 +48,6 @@ export function FeaturesCardPage({
   description,
 }) {
   const { classes } = useStyles();
-  const router = useRouter();
 
   return (
     <Link href={`/produtos/${type}/${id}`}>
@@ -151,7 +149,6 @@ export function FeaturesCardPage({
 
               localStorage.setItem("items", JSON.stringify(newItems2));
               event.preventDefault();
-              router.push("/cart");
             }}
           >
             Comprar
