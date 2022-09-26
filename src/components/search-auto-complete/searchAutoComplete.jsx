@@ -3,7 +3,6 @@ import { Group, Avatar, Text, Autocomplete, createStyles } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   search: { [theme.fn.smallerThan("xs")]: { display: "none" } },
@@ -26,9 +25,6 @@ export function SearchAutoComplete() {
   const { classes } = useStyles();
   const [searchItems, setSeachItems] = useState([]);
   const [termoDeBusca, setTermoDeBusca] = useState();
-  const router = useRouter();
-  const category = router.query.category;
-  const productId = router.query.productId;
 
   // /api/search?batata=${termoDeBusca}
   // toda vez que chamar essa api atualizar o seachItems com os valores retornados da pesquisa de produtos.

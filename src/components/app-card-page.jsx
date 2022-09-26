@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   card: {
     marginTop: "10px",
     width: "400px",
