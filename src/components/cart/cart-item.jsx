@@ -3,14 +3,9 @@ import { IconMinus, IconPlus, IconTrash } from "@tabler/icons";
 import Link from "next/link";
 
 export function CartItem({ item, setItems }) {
-  // const currentPrice = getCurrentPrice()
-
   function increaseAmount() {
-    // 1 pegar item do localStorage
     let products = localStorage.getItem("items");
     products = JSON.parse(products);
-
-    // 2 ir na posição do elemento do item no localstorage e aumentar a quantidade (pode-se usar for)
 
     for (const product of products) {
       if (product.id == item.id) {
@@ -18,19 +13,16 @@ export function CartItem({ item, setItems }) {
         break;
       }
     }
-    // 3 atualizar item no localstorage
+
     localStorage.setItem("items", JSON.stringify(products));
 
-    // 4 atualizar os items localmente
     setItems(products);
   }
 
   function decreaseAmount() {
-    // 1 pegar item do localStorage
     let products = localStorage.getItem("items");
     products = JSON.parse(products);
 
-    // 2 ir na posição do elemento do item no localstorage e aumentar a quantidade (pode-se usar for)
     for (const product of products) {
       if (product.id == item.id) {
         if (product["amount"] === 1) {
@@ -44,31 +36,19 @@ export function CartItem({ item, setItems }) {
       }
     }
 
-    // 3 atualizar item no localstorage
     localStorage.setItem("items", JSON.stringify(products));
 
-    // 4 atualizar os items localmente
     setItems(products);
   }
 
-  // function getCurrentPrice() {
-  //   const batata = item.amount * item.price;
-  //   console.log(item);
-  //   return batata
-  // }
-
   function removeItem() {
-    // 1 pegar item do localStorage
     let products = localStorage.getItem("items");
     products = JSON.parse(products);
-
-    // 2 criar o novo array de items sem o item atual (usar o filter)
 
     const todosOsItensQueNaoEOAtual = products.filter(
       (batata) => item.id !== batata.id
     );
 
-    // 3 atualizar item no localstorage
     localStorage.setItem("items", JSON.stringify(todosOsItensQueNaoEOAtual));
     setItems(todosOsItensQueNaoEOAtual);
   }

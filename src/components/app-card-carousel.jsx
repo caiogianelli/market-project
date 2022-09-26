@@ -6,6 +6,7 @@ import {
   Badge,
   createStyles,
   Button,
+  Tooltip,
 } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -16,7 +17,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
         : theme.colors.gray[1],
-    height: "380px",
+    height: "350px",
     cursor: "pointer",
   },
 
@@ -51,7 +52,7 @@ const useStyles = createStyles((theme) => ({
     borderTop: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
-    height: "100px",
+    height: "50px",
     display: "flex",
     justifyContent: "space-around",
   },
@@ -86,9 +87,11 @@ export function FeaturesCardCarousel({
 
         <Group className={classes.cardTitle} position="apart" my="md">
           <div>
-            <Text lineClamp={1} weight={500} size="lg">
-              {title}
-            </Text>
+            <Tooltip label={title} color="orange" withArrow multiline>
+              <Text lineClamp={1} weight={500} size="lg">
+                {title}
+              </Text>
+            </Tooltip>
             <Text size="xs" color="orange">
               {type}
             </Text>
@@ -96,7 +99,7 @@ export function FeaturesCardCarousel({
         </Group>
 
         <Card.Section className={classes.priceBuyContainer}>
-          <Group spacing={100} mb={15}>
+          <Group spacing={10} mb={10}>
             <div>
               <Text size="20px" weight={700} sx={{ lineHeight: 1 }}>
                 R$ {price.toFixed(2).toString().replace(".", ",")}

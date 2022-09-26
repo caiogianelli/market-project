@@ -9,9 +9,6 @@ export default function Home({ products }) {
   return (
     <div>
       <HeaderSearch />
-
-      {/* <FeaturesCard image={products[0].img} /> */}
-
       <Container
         size={"xl"}
         style={{
@@ -26,7 +23,7 @@ export default function Home({ products }) {
           <Carousel
             styles={{ weight: "50px" }}
             slideGap="md"
-            height={420}
+            height={390}
             controlSize={40}
             draggable={true}
             align="start"
@@ -55,11 +52,10 @@ export default function Home({ products }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const products = getProducts();
 
   return {
-    // Passed to the page component as props
     props: { products },
   };
 }
