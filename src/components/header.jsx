@@ -89,7 +89,7 @@ export function HeaderSearch() {
           <Drawer
             opened={opened}
             onClose={() => setOpened(false)}
-            title="Neko Store"
+            title="Prototype Shop"
             padding="xs"
             size="xm"
           >
