@@ -9,10 +9,6 @@ export function AppCart() {
   const priceTotal = getSumPrice();
 
   function getSumAmount() {
-    // let amountTotal = items.reduce((valorAnterior, item) => {
-    //   return valorAnterior + item.amount;
-    // }, 0);
-
     let atotal = 0;
     items.forEach((product) => {
       atotal += product.amount;
@@ -44,6 +40,7 @@ export function AppCart() {
       </Container>
     );
   }
+
   function removeAllItem() {
     let products = [];
 

@@ -1,31 +1,32 @@
-import {
-  Button,
-  Container,
-  FileInput,
-  Input,
-  Text,
-  TextInput,
-} from "@mantine/core";
+import { Button, Container, FileInput, TextInput } from "@mantine/core";
 import { IconAt } from "@tabler/icons";
 import { PasswordInput } from "@mantine/core";
 
 export default function CreateAccount() {
   return (
     <Container my={100} mx={530}>
-      <TextInput placeholder="Your name" label="Full name" withAsterisk />
-      <Text>Email</Text>
-      <Input
+      <TextInput placeholder="Seu nome" label="Nome completo" withAsterisk />
+
+      <TextInput
+        placeholder="seu@email.com"
+        label="Email"
         my={10}
-        radius="md"
         icon={<IconAt />}
-        placeholder="Seu e-mail"
-        label="email"
+        withAsterisk
       />
-      <FileInput placeholder="login" label="Login" radius="md" my={10} />
+
+      <FileInput
+        placeholder="Login"
+        label="Login"
+        radius="md"
+        my={10}
+        withAsterisk
+      />
       <PasswordInput
         radius="md"
-        placeholder="Password"
+        placeholder="Senha"
         label="Senha"
+        withAsterisk
         // description="A senha deve incluir pelo menos uma letra, número e caractere especial"
         // withAsterisk
       />

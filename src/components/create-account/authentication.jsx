@@ -31,8 +31,8 @@ export function AuthenticationTitle() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@email.com" required />
-        <PasswordInput label="Password" placeholder="Senha" required mt="md" />
+        <TextInput label="Email" placeholder="seu@email.com" required />
+        <PasswordInput label="Senha" placeholder="Senha" required mt="md" />
         <Group position="apart" mt="md">
           <Checkbox label="Lembrar" />
           <Anchor

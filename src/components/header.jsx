@@ -1,20 +1,19 @@
 import {
   createStyles,
   Header,
-  Autocomplete,
   Group,
   Burger,
   Modal,
   Button,
-  Popover,
+  Drawer,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import { IconSearch } from "@tabler/icons";
+
 import Link from "next/link";
 import { useState } from "react";
 import { AuthenticationTitle } from "./create-account/authentication";
 import DarkTheme from "./dark-theme";
 import { NavbarNested } from "./navbar/navbar";
+import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -68,7 +67,8 @@ const links = [
 ];
 
 export function HeaderSearch() {
-  const [opened, { toggle }] = useDisclosure(false);
+  // const [opened, { toggle }] = useDisclosure(false);
+  const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
   const [modal, setModal] = useState(false);
 
@@ -81,24 +81,24 @@ export function HeaderSearch() {
   return (
     <Header height={56} className={classes.header} mb={0}>
       <div className={classes.inner}>
-        <Group>
-          <Popover opened={opened} onClick={toggle}>
-            <Popover.Target>
-              <Burger opened={opened} onClick={toggle} size="sm" />
-            </Popover.Target>
-            <Popover.Dropdown px={0}>
-              <NavbarNested />
-            </Popover.Dropdown>
-          </Popover>
+        <Group position="left">
+          <Burger opened={opened} size="sm" onClick={() => setOpened(true)} />
         </Group>
 
         <Group>
-          <Autocomplete
-            className={classes.search}
-            placeholder="Buscar"
-            icon={<IconSearch size={16} stroke={1.5} />}
-            data={[]}
-          />
+          <Drawer
+            opened={opened}
+            onClose={() => setOpened(false)}
+            title="Neko Store"
+            padding="xs"
+            size="xm"
+          >
+            <NavbarNested />
+          </Drawer>
+        </Group>
+
+        <Group>
+          <SearchAutoComplete />
           <Group ml={50} spacing={5} className={classes.links}>
             {items}
             <>

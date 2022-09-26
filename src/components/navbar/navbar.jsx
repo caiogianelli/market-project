@@ -1,7 +1,6 @@
 import {
   Navbar,
   Group,
-  Code,
   ScrollArea,
   createStyles,
   Autocomplete,
@@ -33,10 +32,10 @@ const mockdata = [
     icon: IconLock,
     links: [
       { label: "Carrinho", link: "/cart" },
-      { label: "Meus Pedidos", link: "/" },
-      { label: "Histórico", link: "/" },
-      { label: "Mudar Senha", link: "/" },
-      { label: "Deslogar", link: "/" },
+      { label: "Meus Pedidos", link: "/create-account" },
+      { label: "Histórico", link: "/create-account" },
+      { label: "Mudar Senha", link: "/create-account" },
+      { label: "Deslogar", link: "/create-account" },
     ],
   },
 ];
@@ -93,10 +92,7 @@ export function NavbarNested() {
         className={classes.navbar}
       >
         <Navbar.Section className={classes.header}>
-          <Group position="apart">
-            {/* <Logo width={120} /> */}
-            <Code sx={{ fontWeight: 700 }}>Neko Store</Code>
-          </Group>
+          <Group position="apart">{/* <Logo width={120} /> */}</Group>
         </Navbar.Section>
         <Autocomplete
           mt={20}

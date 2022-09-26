@@ -102,22 +102,13 @@ export function FeaturesCardPage({
             size="xl"
             style={{ flex: 1 }}
             onClick={(event) => {
-              // passo 1
-              // pegar items do localstorage (declarar como let)
               let items = localStorage.getItem("items");
-
-              // passo 2
-              // checar se existem items no localstorage,
-              //  se existir transformar o valor do localstorage (que é armazenado em string) em array usando o JSON.parse
-              //  caso contrario usar um array vazio como default
               if (items != null) {
                 items = JSON.parse(items);
               } else {
                 items = [];
               }
 
-              // passo 3
-              // declarar o produto (ignorar se o produto já existir no carrinho)
               let product = {
                 image,
                 title,
@@ -129,15 +120,12 @@ export function FeaturesCardPage({
                 amount: 1,
               };
 
-              // passo 4
-              // checar se o item existe no carrinho
-              // se existir aumentar a quantidade
-              // caso contrario adicionar item no carrinho
-
               const todosOsItensQueNaoEOAtual = items.filter(
                 (item) => product.id !== item.id
               );
+
               let test = items.find((item) => product.id === item.id);
+
               if (test) {
                 test["amount"] += 1;
               } else {
@@ -147,6 +135,7 @@ export function FeaturesCardPage({
               const newItems2 = [test, ...todosOsItensQueNaoEOAtual];
 
               // let itemAlreadyExist = false;
+
               // for (const item of items) {
               //   if (product.id == item.id) {
               //     item["amount"] += 1;
@@ -160,9 +149,6 @@ export function FeaturesCardPage({
               // }
               // console.log("items", items);
 
-              // passo 5
-              // atualizar o valor items do localstorage com o novo items que conterá o novo item juntamente
-              //  aos items anteriores (caso existam)
               localStorage.setItem("items", JSON.stringify(newItems2));
               event.preventDefault();
               router.push("/cart");
