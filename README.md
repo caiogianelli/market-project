@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Prototipo de Mercado
 
-## Getting Started
+Prototipo de website de compras, com produtos, adicionar e remover produtos no carrinho
 
-First, run the development server:
+## ⚡ Projeto iniciado com Next.js
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Para mais informações vá ao site oficial do [Next.js](https://nextjs.org/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✔️ Técnicas e tecnologias utilizadas
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [JavaScript](https://262.ecma-international.org/5.1/)
+- [React](https://pt-br.reactjs.org)
+- [Next](https://nextjs.org/)
+- [Mantine](https://mantine.dev/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 📁 Acesso ao projeto
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Esse é um repoistório público e você pode acessar a qualquer momento clicando <a href="https://github.com/caiogianelli/market-project">aqui</a>.
 
-## Learn More
+## 🛠️ Abrir e rodar projeto
 
-To learn more about Next.js, take a look at the following resources:
+Após baixar o projeto, você pode abrir com qualquer editor de código de sua preferência, para produção foi utilizado <a href="https://code.visualstudio.com">VSCode</a>.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Scripts Disponíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Nesse projeto você deve rodar inicialmente:
 
-## Deploy on Vercel
+### `yarn`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para instalar todas bibliotecas e dependências necessárias.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### `yarn dev`
+
+Roda localmente a aplicação em modo de desenvolvimento.
+
+É gerado um endereço no próprio terminal para acesso da aplicação.
+É possivel também abrir no endereço http://localhost:3000
+
+Com o acesso, a página recarrega automáticamente caso efetue uma edição no código.
+É possível ver no próprio console do navegador os erros, caso ocorram.
+
+### `yarn dev --host`
+
+É gerado um endereço que pode ser acessado tanto localmente no seu computador ou em outros dispositivo que estiverem na mesma rede local da sua internet.
+
+### `yarn preview`
+
+Roda localmente a versão anterior do projeto.
+
+### `yarn build`
+
+Prepara o projeto para ser implantado de forma estática em produção.
