@@ -10,12 +10,13 @@ import {
 } from "@mantine/core";
 
 import Link from "next/link";
-import { IconShoppingCart, IconHome, IconLogin } from "@tabler/icons";
+import { IconHome, IconLogin } from "@tabler/icons";
 import { useState } from "react";
 import { AuthenticationTitle } from "./create-account/authentication";
 import DarkTheme from "./dark-theme";
 import { NavbarNested } from "./navbar/navbar";
 import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
+import { SetIndicator } from "./indicator";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -64,7 +65,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeaderSearch() {
+export function HeaderSearch({ items, setItems }) {
   // const [opened, { toggle }] = useDisclosure(false);
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
@@ -92,43 +93,29 @@ export function HeaderSearch() {
         <Group>
           <SearchAutoComplete />
 
-          <>
-            <Modal
-              opened={modal}
-              onClose={() => setModal(false)}
-              title="Criar Conta"
-            >
-              {<AuthenticationTitle />}
-            </Modal>
+          <ActionIcon size={23}>
+            <Link href={"/"}>
+              <IconHome size={34} stroke={1.5} />
+            </Link>
+          </ActionIcon>
 
-            <ActionIcon size={23}>
-              <Link href={"/"}>
-                <IconHome size={34} stroke={1.5} />
-              </Link>
-            </ActionIcon>
+          <SetIndicator items={items} setItems={setItems} />
 
-            <ActionIcon size={23}>
-              <Link href={"/cart"}>
-                <IconShoppingCart size={34} stroke={1.5} />
-              </Link>
-            </ActionIcon>
+          <Button onClick={() => setModal(true)}>
+            {<IconLogin size={23} stroke={1.5} />}Login
+          </Button>
 
-            <Button onClick={() => setModal(true)}>
-              {<IconLogin size={23} stroke={1.5} />}Login
-            </Button>
+          <Modal
+            opened={modal}
+            onClose={() => setModal(false)}
+            title="Criar Conta"
+          >
+            {<AuthenticationTitle />}
+          </Modal>
 
-            <Group position="center">
-              <DarkTheme />
-            </Group>
-            {/* <Group position="center">
-                <UserButton
-                  image="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-                  name="administrador"
-                  email="test@email.com"
-                />
-              </Group> */}
-            <Group position="center"></Group>
-          </>
+          <Group position="center">
+            <DarkTheme />
+          </Group>
         </Group>
       </div>
     </Header>

@@ -1,10 +1,8 @@
 import { Table, Text, ScrollArea, Button, Box, Container } from "@mantine/core";
 import { IconTrash } from "@tabler/icons";
-import { useEffect, useState } from "react";
 import { CartItem } from "./cart-item";
 
-export function AppCart() {
-  const [items, setItems] = useState([]);
+export function AppCart({ items, setItems }) {
   const amountTotal = getSumAmount();
   const priceTotal = getSumPrice();
 
@@ -23,13 +21,6 @@ export function AppCart() {
     });
     return pTotal;
   }
-
-  useEffect(() => {
-    const produtosDoCarrinhoLocalStorage = JSON.parse(
-      localStorage.getItem("items")
-    );
-    setItems(produtosDoCarrinhoLocalStorage);
-  }, []);
 
   if (items === null || items.length === 0) {
     return (

@@ -2,8 +2,23 @@ import Head from "next/head";
 import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import "../styles/globals.css";
 import { useLocalStorage } from "@mantine/hooks";
+import { useEffect, useState } from "react";
+
 export default function App(props) {
   const { Component, pageProps } = props;
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    let cartItems = localStorage.getItem("items");
+
+    if (cartItems != null) {
+      cartItems = JSON.parse(cartItems);
+    } else {
+      cartItems = [];
+    }
+    setItems(cartItems);
+  }, []);
 
   const [colorScheme, setColorScheme] = useLocalStorage({
     defaultValue: "light",
@@ -15,7 +30,7 @@ export default function App(props) {
   return (
     <>
       <Head>
-        <title>Neko Store</title>
+        <title>Prototype Shop</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -35,7 +50,7 @@ export default function App(props) {
             primaryColor: "orange",
           }}
         >
-          <Component {...pageProps} />
+          <Component {...pageProps} items={items} setItems={setItems} />
         </MantineProvider>
       </ColorSchemeProvider>
     </>

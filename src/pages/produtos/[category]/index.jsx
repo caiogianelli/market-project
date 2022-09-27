@@ -1,13 +1,13 @@
 import { Container, SimpleGrid, Text } from "@mantine/core";
-import { FeaturesCard } from "../../../components/app-card";
+import { CategoryProducts } from "../../../components/app-card/category-products";
 import { FooterSocial } from "../../../components/footer";
 import { HeaderSearch } from "../../../components/header";
 import { getAllCategories, getCategoryProducts } from "../../api/product";
 
-const Category = ({ products }) => {
+const Category = ({ products, items, setItems }) => {
   return (
     <div>
-      <HeaderSearch />
+      <HeaderSearch items={items} setItems={setItems} />
 
       <Container
         style={{
@@ -24,7 +24,9 @@ const Category = ({ products }) => {
           ]}
         >
           {products.map((product) => (
-            <FeaturesCard
+            <CategoryProducts
+              items={items}
+              setItems={setItems}
               size="100%"
               key={product.id}
               id={product.id}
@@ -57,9 +59,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const type = context.params.category;
-  console.log(type);
+
   const products = getCategoryProducts(type);
-  console.log(products);
+
   return {
     props: { products, type },
   };

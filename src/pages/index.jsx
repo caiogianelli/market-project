@@ -2,13 +2,13 @@ import { HeaderSearch } from "../components/header";
 import { FooterSocial } from "../components/footer";
 import { Container, Text } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
-import { FeaturesCardCarousel } from "../components/app-card-carousel";
+import { ProductsCarousel } from "../components/app-card/products-carousel";
 import { getProducts } from "./api/product";
 
-export default function Home({ products }) {
+export default function Home({ products, items, setItems }) {
   return (
     <div>
-      <HeaderSearch />
+      <HeaderSearch items={items} setItems={setItems} />
       <Container
         size={"xl"}
         style={{
@@ -23,7 +23,7 @@ export default function Home({ products }) {
           <Carousel
             styles={{ weight: "50px" }}
             slideGap="md"
-            height={390}
+            height={400}
             controlSize={40}
             draggable={true}
             align="start"
@@ -41,7 +41,9 @@ export default function Home({ products }) {
           >
             {products.map((product) => (
               <Carousel.Slide key={product.id} size="25%">
-                <FeaturesCardCarousel
+                <ProductsCarousel
+                  items={items}
+                  setItems={setItems}
                   id={product.id}
                   image={product.img}
                   title={product.name}
