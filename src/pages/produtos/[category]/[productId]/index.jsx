@@ -1,13 +1,13 @@
 import { Container, Text } from "@mantine/core";
-import { FeaturesCardPage } from "../../../../components/app-card-page";
+import { ProductDetails } from "../../../../components/app-card/product-details";
 import { FooterSocial } from "../../../../components/footer";
 import { HeaderSearch } from "../../../../components/header";
 import { getProduct, getProducts } from "../../../api/product";
 
-const ProductId = ({ products, type, id }) => {
+const ProductId = ({ products, type, id, items, setItems }) => {
   return (
     <div>
-      <HeaderSearch />
+      <HeaderSearch items={items} setItems={setItems} />
 
       <Container
         style={{
@@ -19,14 +19,11 @@ const ProductId = ({ products, type, id }) => {
         </Text>
 
         {products
-          .filter((product) => {
-            if (product.type === type && product.id === id) {
-              return product;
-            }
-          })
-
+          .filter((product) => product.type === type && product.id === id)
           .map((product) => (
-            <FeaturesCardPage
+            <ProductDetails
+              items={items}
+              setItems={setItems}
               size="100%"
               key={product.id}
               id={product.id}

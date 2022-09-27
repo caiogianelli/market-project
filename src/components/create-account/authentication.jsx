@@ -24,10 +24,7 @@ export function AuthenticationTitle() {
         Bem Vindo!
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
-        Ainda não tem conta?{" "}
-        <Anchor href="./create-account" size="sm">
-          Criar Conta
-        </Anchor>
+        Ainda não tem conta? <Anchor size="sm">Criar Conta</Anchor>
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
