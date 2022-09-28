@@ -30,7 +30,6 @@ export function CartItem({ item, setItems }) {
           break;
         } else {
           product["amount"] -= 1;
-
           break;
         }
       }

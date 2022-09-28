@@ -8,7 +8,6 @@ import {
   ActionIcon,
   Button,
 } from "@mantine/core";
-
 import Link from "next/link";
 import { IconHome, IconLogin } from "@tabler/icons";
 import { useState } from "react";
@@ -66,7 +65,6 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function HeaderSearch({ items, setItems }) {
-  // const [opened, { toggle }] = useDisclosure(false);
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
   const [modal, setModal] = useState(false);

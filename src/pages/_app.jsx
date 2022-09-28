@@ -3,6 +3,8 @@ import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import "../styles/globals.css";
 import { useLocalStorage } from "@mantine/hooks";
 import { useEffect, useState } from "react";
+import { NotificationsProvider } from "@mantine/notifications";
+import { RouterTransition } from "../components/router-transition";
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -50,7 +52,14 @@ export default function App(props) {
             primaryColor: "orange",
           }}
         >
-          <Component {...pageProps} items={items} setItems={setItems} />
+          <NotificationsProvider
+            position="top-center"
+            containerWidth={400}
+            style={{ marginTop: "50px", textAlign: "center" }}
+          >
+            <RouterTransition />
+            <Component {...pageProps} items={items} setItems={setItems} />
+          </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

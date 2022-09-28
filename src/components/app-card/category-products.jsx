@@ -7,7 +7,9 @@ import {
   createStyles,
   Button,
   Tooltip,
+  Notification,
 } from "@mantine/core";
+import { IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -15,11 +17,15 @@ const useStyles = createStyles((theme) => ({
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     cursor: "pointer",
+    height: "340px",
   },
 
   cardTitle: {
     alignItems: "flex-start",
-    height: "35px",
+    height: "30px",
+    display: "inline-table",
+    marginTop: "5px",
+    marginBottom: "5px",
   },
 
   imageSection: {
@@ -43,13 +49,27 @@ const useStyles = createStyles((theme) => ({
   },
 
   priceBuyContainer: {
-    padding: theme.spacing.sm,
+    padding: "8px",
     borderTop: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
-    height: "70px",
+    height: "35px",
+    marginBottom: "5px",
+    gap: "20px",
     display: "flex",
-    justifyContent: "space-around",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  buttonPrice: {
+    borderRadius: "4px",
+    minWidth: "50px",
+    height: "35px",
+    paddingLeft: "45px",
+    paddingRight: "45px",
   },
 
   icon: {
@@ -108,7 +128,7 @@ export function CategoryProducts({
         </Link>
       </Card.Section>
 
-      <Group className={classes.cardTitle} position="apart" my="md">
+      <Group className={classes.cardTitle}>
         <div>
           <Tooltip
             multiline
@@ -130,23 +150,27 @@ export function CategoryProducts({
       </Group>
 
       <Card.Section className={classes.priceBuyContainer}>
-        <Group spacing={15} mx={1}>
-          <div>
-            <Text size="xl" weight={700} sx={{ lineHeight: 1 }}>
-              R${price.toFixed(2).toString().replace(".", ",")}
-            </Text>
+        <div>
+          <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
+            R$ {price.toFixed(2).toString().replace(".", ",")}
+          </Text>
+        </div>
+        <div>
+          {offer != 0 && <Badge variant="outline">{offer} % OFF</Badge>}
+        </div>
+      </Card.Section>
 
-            {offer != 0 && (
-              <Badge variant="outline" p={"0 5px"}>
-                {offer} % OFF
-              </Badge>
-            )}
-          </div>
-
-          <Button radius="xs" size="xs" style={{ flex: 1 }} onClick={addToCart}>
-            Comprar
-          </Button>
-        </Group>
+      <Card.Section className={classes.priceBuyContainer}>
+        <Button
+          className={classes.buttonPrice}
+          onClick={() => {
+            <Notification title="Produto adicionado ao carrinho" />;
+            addToCart();
+          }}
+        >
+          Adicionar
+          {<IconShoppingCartPlus size={18} style={{ marginLeft: "10px" }} />}
+        </Button>
       </Card.Section>
     </Card>
   );
