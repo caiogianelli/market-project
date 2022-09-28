@@ -1,7 +1,7 @@
 export const products = [
   {
     name: "Berserk Guts 410 Berserker Armor Ver. Figma PVC Action Figure Collection Figurine Model Toy",
-    price: 200.0,
+    price: 1200.0,
     type: "figure",
     img: "https://i.ebayimg.com/images/g/mWYAAOSwDsVhznc6/s-l1600.jpg",
     description:

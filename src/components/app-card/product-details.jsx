@@ -8,7 +8,8 @@ import {
   Button,
   SimpleGrid,
 } from "@mantine/core";
-import Link from "next/link";
+import { showNotification } from "@mantine/notifications";
+import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 
 const useStyles = createStyles(() => ({
   card: {
@@ -122,8 +123,20 @@ export function ProductDetails({
             )}
           </Text>
         </div>
-        <Button radius="sm" size="xl" style={{ flex: 1 }} onClick={addToCart}>
-          Comprar
+        <Button
+          radius="sm"
+          size="xl"
+          style={{ flex: 1 }}
+          onClick={() => {
+            showNotification({
+              icon: <IconCheck />,
+              title: "Produto adicionado ao carrinho",
+            });
+            addToCart();
+          }}
+        >
+          Adicionar
+          {<IconShoppingCartPlus style={{ marginLeft: "10px" }} />}{" "}
         </Button>
       </Group>
     </SimpleGrid>

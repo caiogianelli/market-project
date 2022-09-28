@@ -2,7 +2,7 @@ import { Indicator, ActionIcon } from "@mantine/core";
 import Link from "next/link";
 import { IconShoppingCart } from "@tabler/icons";
 
-export function SetIndicator({ items, setItems }) {
+export function SetIndicator({ items }) {
   const batata = items.map((batatinha) => batatinha.amount);
   let count = 0;
   for (const frango of batata) {

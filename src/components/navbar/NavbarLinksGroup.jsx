@@ -82,14 +82,23 @@ export function LinksGroup({
         className={classes.control}
       >
         <Group position="apart" spacing={0}>
-          <Link href={link || ""}>
+          {link ? (
+            <Link href={link || ""}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <ThemeIcon variant="light" size={30}>
+                  <Icon size={18} />
+                </ThemeIcon>
+                <Box ml="md">{label}</Box>
+              </Box>
+            </Link>
+          ) : (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <ThemeIcon variant="light" size={30}>
                 <Icon size={18} />
               </ThemeIcon>
               <Box ml="md">{label}</Box>
             </Box>
-          </Link>
+          )}
 
           {hasLinks && (
             <ChevronIcon

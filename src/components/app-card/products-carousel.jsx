@@ -8,7 +8,8 @@ import {
   Button,
   Tooltip,
 } from "@mantine/core";
-import { IconShoppingCartPlus } from "@tabler/icons";
+import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
+import { showNotification } from "@mantine/notifications";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -145,7 +146,16 @@ export function ProductsCarousel({
             )}
           </div>
 
-          <Button className={classes.buttonPrice} onClick={addToCart}>
+          <Button
+            className={classes.buttonPrice}
+            onClick={() => {
+              showNotification({
+                icon: <IconCheck />,
+                title: "Produto adicionado ao carrinho",
+              });
+              addToCart();
+            }}
+          >
             Adicionar
             {<IconShoppingCartPlus style={{ marginLeft: "10px" }} />}{" "}
           </Button>

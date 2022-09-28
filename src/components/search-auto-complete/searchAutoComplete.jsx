@@ -3,6 +3,7 @@ import { Group, Avatar, Text, Autocomplete, createStyles } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   search: { [theme.fn.smallerThan("xs")]: { display: "none" } },
@@ -25,9 +26,7 @@ export function SearchAutoComplete() {
   const { classes } = useStyles();
   const [searchItems, setSeachItems] = useState([]);
   const [termoDeBusca, setTermoDeBusca] = useState();
-
-  // /api/search?batata=${termoDeBusca}
-  // toda vez que chamar essa api atualizar o seachItems com os valores retornados da pesquisa de produtos.
+  const router = useRouter();
 
   useEffect(() => {
     fetch(`/api/search?q=${termoDeBusca}`)
@@ -38,13 +37,14 @@ export function SearchAutoComplete() {
             value: item.name,
             image: item.img,
             label: item.name,
+            type: item.type,
+            id: item.id,
           };
         });
         setSeachItems(buscaFormatada);
       });
   }, [termoDeBusca]);
 
-  // console.log(searchItems);
   return (
     <Autocomplete
       value={termoDeBusca}
@@ -53,6 +53,7 @@ export function SearchAutoComplete() {
       className={classes.search}
       icon={<IconSearch size={20} stroke={1.5} />}
       itemComponent={AutoCompleteItem}
+      onItemSubmit={(item) => router.push(`/produtos/${item.type}/${item.id}`)}
       data={searchItems}
       filter={(value, item) =>
         item.value.toLowerCase().includes(value.toLowerCase().trim())
