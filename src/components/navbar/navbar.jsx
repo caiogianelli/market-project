@@ -1,5 +1,5 @@
 import { Navbar, Group, ScrollArea, createStyles } from "@mantine/core";
-import { IconNotes, IconHome2, IconLock } from "@tabler/icons";
+import { IconNotes, IconHome2, IconLock, IconPercentage } from "@tabler/icons";
 import { SearchAutoComplete } from "../search-auto-complete/searchAutoComplete";
 import { LinksGroup } from "./NavbarLinksGroup";
 
@@ -8,6 +8,11 @@ const mockdata = [
     label: "Pagina Inicial",
     icon: IconHome2,
     link: "/",
+  },
+  {
+    label: "Promoções",
+    icon: IconPercentage,
+    link: "/offer",
   },
   {
     label: "Categorias",
@@ -20,17 +25,10 @@ const mockdata = [
       { label: "Acessórios", link: "/produtos/acessorios" },
     ],
   },
-
   {
     label: "Conta",
     icon: IconLock,
-    links: [
-      { label: "Carrinho", link: "/cart" },
-      { label: "Meus Pedidos", link: "/create-account" },
-      { label: "Histórico", link: "/create-account" },
-      { label: "Mudar Senha", link: "/create-account" },
-      { label: "Deslogar", link: "/create-account" },
-    ],
+    links: [{ label: "Carrinho", link: "/cart" }],
   },
 ];
 

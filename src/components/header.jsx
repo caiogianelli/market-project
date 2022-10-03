@@ -16,20 +16,24 @@ import DarkTheme from "./dark-theme";
 import { NavbarNested } from "./navbar/navbar";
 import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
 import { SetIndicator } from "./indicator";
+import styled from "@emotion/styled";
+
+const StyledContainer = styled.div`
+  height: 56px;
+`;
+
+const StyledHeader = styled(Header)`
+  padding-left: ${(props) => props.theme.spacing.md}px;
+  padding-right: ${(props) => props.theme.spacing.md}px;
+  padding-right: ${({ theme }) => theme.spacing.md}px;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+`;
 
 const useStyles = createStyles((theme) => ({
-  header: {
-    paddingLeft: theme.spacing.md,
-    paddingRight: theme.spacing.md,
-  },
-
-  inner: {
-    height: 56,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
   links: {
     [theme.fn.smallerThan("md")]: {
       display: "none",
@@ -70,8 +74,8 @@ export function HeaderSearch({ items, setItems }) {
   const [modal, setModal] = useState(false);
 
   return (
-    <Header height={56} className={classes.header} mb={0}>
-      <div className={classes.inner}>
+    <StyledContainer>
+      <StyledHeader fixed>
         <Group position="left">
           <Burger opened={opened} size="sm" onClick={() => setOpened(true)} />
         </Group>
@@ -91,11 +95,11 @@ export function HeaderSearch({ items, setItems }) {
         <Group>
           <SearchAutoComplete />
 
-          <ActionIcon size={23}>
-            <Link href={"/"}>
+          <Link href={"/"}>
+            <ActionIcon size={23}>
               <IconHome size={34} stroke={1.5} />
-            </Link>
-          </ActionIcon>
+            </ActionIcon>
+          </Link>
 
           <SetIndicator items={items} setItems={setItems} />
 
@@ -115,7 +119,7 @@ export function HeaderSearch({ items, setItems }) {
             <DarkTheme />
           </Group>
         </Group>
-      </div>
-    </Header>
+      </StyledHeader>
+    </StyledContainer>
   );
 }
