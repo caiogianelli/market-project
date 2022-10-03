@@ -1,12 +1,35 @@
 import { HeaderSearch } from "../components/header";
 import { FooterSocial } from "../components/footer";
-import { Container, SimpleGrid, Text } from "@mantine/core";
+import { Button, Container, SimpleGrid, Text } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { ProductsCarousel } from "../components/app-card/products-carousel";
 import { getProducts } from "./api/product";
 import { CategoryProducts } from "../components/app-card/category-products";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { useState } from "react";
+import { CategoryCarousel } from "../components/category-carousel";
 
 export default function Home({ products, items, setItems }) {
+  const [itemsLimit, setItemsLimit] = useState(4);
+  const autoplay = useRef(Autoplay({ delay: 4000 }));
+
+  let categories = [];
+  products.forEach((bat) => {
+    const categoryIndexFound = categories.findIndex(
+      (category) => category.name === bat.type
+    );
+
+    if (categoryIndexFound === -1) {
+      categories.push({
+        name: bat.type,
+        images: [bat.image],
+      });
+    } else {
+      categories[categoryIndexFound].images.push(bat.image);
+    }
+  });
+
   return (
     <div>
       <HeaderSearch items={items} setItems={setItems} />
@@ -22,6 +45,7 @@ export default function Home({ products, items, setItems }) {
 
         {products.length > 0 && (
           <Carousel
+            plugins={[autoplay.current]}
             styles={(theme) => (
               { weight: "50px" },
               {
@@ -31,11 +55,7 @@ export default function Home({ products, items, setItems }) {
                       ? theme.white
                       : theme.colors.dark[7],
                 },
-                controls: {
-                  right: "-12px",
-                  left: "-12px",
-                  top: "0%",
-                },
+
                 control: {
                   backgroundColor:
                     theme.colorScheme === "dark"
@@ -44,9 +64,6 @@ export default function Home({ products, items, setItems }) {
 
                   color:
                     theme.colorScheme === "dark" ? theme.white : theme.white,
-                  height: "400px",
-                  borderRadius: "3px",
-                  minWidth: "18px",
                 },
               }
             )}
@@ -67,26 +84,23 @@ export default function Home({ products, items, setItems }) {
               },
             ]}
           >
-            {products.map((product) => (
+            {products.slice(0, 10).map((product) => (
               <Carousel.Slide key={product.id} size="25%">
                 <ProductsCarousel
                   items={items}
                   setItems={setItems}
-                  id={product.id}
-                  image={product.img}
-                  title={product.name}
-                  price={product.price}
-                  type={product.type}
-                  offer={product.offer}
+                  {...product}
                 />
               </Carousel.Slide>
             ))}
           </Carousel>
         )}
-        <Text align="left" size="35px" weight={600} color="orange" mt={20}>
+        <Text align="left" size="28px" weight={600} color="orange" mt={20}>
           Promoções
         </Text>
+
         <SimpleGrid
+          mb={20}
           cols={4}
           breakpoints={[
             { maxWidth: "lg", cols: 3 },
@@ -96,23 +110,48 @@ export default function Home({ products, items, setItems }) {
         >
           {products
             .filter((product) => product.offer !== 0)
+            .slice(0, itemsLimit)
             .map((product) => (
               <CategoryProducts
                 items={items}
                 setItems={setItems}
-                size="100%"
                 key={product.id}
-                id={product.id}
-                image={product.img}
-                title={product.name}
-                price={product.price}
-                type={product.type}
-                offer={product.offer}
+                {...product}
               />
             ))}
         </SimpleGrid>
-      </Container>
 
+        {itemsLimit !== products.length && (
+          <Container align="center">
+            <Button
+              variant="subtle"
+              align="center"
+              mb={10}
+              onClick={() => setItemsLimit(products.length)}
+            >
+              Ver mais
+            </Button>
+          </Container>
+        )}
+
+        <Text align="left" size="28px" weight={600} color="orange" mt={20}>
+          Categorias
+        </Text>
+
+        <SimpleGrid
+          mb={20}
+          cols={4}
+          breakpoints={[
+            { maxWidth: "lg", cols: 3 },
+            { maxWidth: "md", cols: 2 },
+            { maxWidth: "xs", cols: 1 },
+          ]}
+        >
+          {categories.map((category) => (
+            <CategoryCarousel key={category.name} category={category} />
+          ))}
+        </SimpleGrid>
+      </Container>
       <FooterSocial />
     </div>
   );

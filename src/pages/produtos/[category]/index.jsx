@@ -10,11 +10,14 @@ const Category = ({ products, items, setItems }) => {
       <HeaderSearch items={items} setItems={setItems} />
 
       <Container
+        mb={20}
         style={{
           minHeight: "calc(100vh - 70px - 70px)",
         }}
       >
-        <Text size={40} mt={20} weight={700} color=""></Text>
+        <Text size={40} mt={20} weight={700} color="orange">
+          {products[0].type[0].toUpperCase() + products[0].type.substring(1)}
+        </Text>
         <SimpleGrid
           cols={4}
           breakpoints={[
@@ -29,12 +32,7 @@ const Category = ({ products, items, setItems }) => {
               setItems={setItems}
               size="100%"
               key={product.id}
-              id={product.id}
-              image={product.img}
-              title={product.name}
-              price={product.price}
-              type={product.type}
-              offer={product.offer}
+              {...product}
             />
           ))}
         </SimpleGrid>

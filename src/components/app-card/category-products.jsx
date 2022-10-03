@@ -7,9 +7,9 @@ import {
   createStyles,
   Button,
   Tooltip,
-  Notification,
 } from "@mantine/core";
-import { IconShoppingCartPlus } from "@tabler/icons";
+import { showNotification } from "@mantine/notifications";
+import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
@@ -66,7 +66,7 @@ const useStyles = createStyles((theme) => ({
 
   buttonPrice: {
     borderRadius: "4px",
-    minWidth: "50px",
+    width: "100%",
     height: "35px",
     paddingLeft: "45px",
     paddingRight: "45px",
@@ -164,7 +164,10 @@ export function CategoryProducts({
         <Button
           className={classes.buttonPrice}
           onClick={() => {
-            <Notification title="Produto adicionado ao carrinho" />;
+            showNotification({
+              icon: <IconCheck />,
+              title: "Produto adicionado ao carrinho",
+            });
             addToCart();
           }}
         >

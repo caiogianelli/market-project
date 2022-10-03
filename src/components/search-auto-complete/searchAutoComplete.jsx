@@ -34,9 +34,9 @@ export function SearchAutoComplete() {
       .then((searchData) => {
         const buscaFormatada = searchData.map((item) => {
           return {
-            value: item.name,
-            image: item.img,
-            label: item.name,
+            value: item.title,
+            image: item.image,
+            label: item.title,
             type: item.type,
             id: item.id,
           };
@@ -56,7 +56,7 @@ export function SearchAutoComplete() {
       onItemSubmit={(item) => router.push(`/produtos/${item.type}/${item.id}`)}
       data={searchItems}
       filter={(value, item) =>
-        item.value.toLowerCase().includes(value.toLowerCase().trim())
+        item?.value?.toLowerCase().includes(value.toLowerCase().trim())
       }
     />
   );

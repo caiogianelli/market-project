@@ -17,11 +17,11 @@ export function SetIndicator({ items }) {
       inline
       size={12}
     >
-      <ActionIcon size={23}>
-        <Link href={"/cart"}>
+      <Link href={"/cart"}>
+        <ActionIcon size={23}>
           <IconShoppingCart size={34} stroke={1.5} />
-        </Link>
-      </ActionIcon>
+        </ActionIcon>
+      </Link>
     </Indicator>
   );
 }

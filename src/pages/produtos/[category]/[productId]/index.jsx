@@ -15,7 +15,7 @@ const ProductId = ({ products, type, id, items, setItems }) => {
         }}
       >
         <Text size={25} mt={20} weight={600} color="orange">
-          {products.name}
+          {products[0].title}
         </Text>
 
         {products
@@ -26,13 +26,7 @@ const ProductId = ({ products, type, id, items, setItems }) => {
               setItems={setItems}
               size="100%"
               key={product.id}
-              id={product.id}
-              image={product.img}
-              title={product.name}
-              description={product.description}
-              price={product.price}
-              type={product.type}
-              offer={product.offer}
+              {...product}
             />
           ))}
       </Container>
@@ -50,17 +44,15 @@ export async function getStaticPaths() {
   });
   return {
     paths: paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: false,
   };
 }
 
-// `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps(context) {
   const type = context.params.category;
   const id = Number(context.params.productId);
   const products = getProduct(type, id);
   return {
-    // Passed to the page component as props
     props: { products, type, id },
   };
 }
