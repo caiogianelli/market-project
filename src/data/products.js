@@ -28,6 +28,7 @@ export const products = [
     description:
       "Figure Monkey D. Luffy, com tamanho de 17 cm, feita de materiais de PVC ecológicos de alta qualidade. Realmente requintado! Estas bonecas modernas exclusivas fazem adições superiores à sua coleção.",
     offer: 0,
+
     id: 3,
   },
   {

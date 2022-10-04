@@ -1,43 +1,44 @@
+import styled from "@emotion/styled";
 import {
   Card,
   Image,
   Text,
   Group,
   Badge,
-  createStyles,
   Button,
   SimpleGrid,
 } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 
-const useStyles = createStyles(() => ({
-  card: {
-    marginTop: "10px",
-    width: "400px",
-    maxHeight: "500px",
-    align: "center",
-  },
+const StyledCard = styled(Group)`
+  margin-top: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+  justify-content: center;
+`;
 
-  cardTitle: {
-    marginTop: "2px",
-    textAlign: "left",
-    maxHeight: "500px",
-    width: "450px",
-  },
+const StyledImage = styled(Card.Section)`
+  width: 400px;
+`;
 
-  imageSection: {
-    width: "400px",
-  },
+const StyledTitle = styled(Group)`
+  margin-top: 2px;
+  text-align: left;
+  max-height: 500px;
+  align-content: flex-start;
+  margin-bottom: 15px;
+  text-align: justify;
+`;
 
-  label: {},
-
-  priceBuyContainer: {
-    width: "500px",
-  },
-
-  icon: {},
-}));
+const StyledButton = styled(Button)`
+  border-radius: 4px;
+  height: 60px;
+  font-size: 25px;
+  align-items: center;
+  flex: 5px;
+  margin-top: 20px;
+`;
 
 export function ProductDetails({
   image,
@@ -50,8 +51,6 @@ export function ProductDetails({
   items,
   setItems,
 }) {
-  const { classes } = useStyles();
-
   function addToCart() {
     let product = {
       image,
@@ -83,27 +82,32 @@ export function ProductDetails({
       cols={2}
       breakpoints={[
         { maxWidth: "lg", cols: 2 },
-        { maxWidth: "md", cols: 1 },
+        { maxWidth: "md", cols: 2 },
+        { maxWidth: "sm", cols: 1 },
         { maxWidth: "xs", cols: 1 },
       ]}
     >
-      <Group className={classes.card}>
-        <Card withBorder className={classes.card}>
-          <Card.Section className={classes.imageSection}>
-            <Image src={image} alt={image} />
-          </Card.Section>
-        </Card>
-      </Group>
+      <StyledCard>
+        <StyledImage>
+          <Image src={image} alt={image} />
+        </StyledImage>
+      </StyledCard>
 
-      <Group className={classes.cardTitle}>
+      <StyledTitle>
         <div>
-          <Text weight={450}>Produto:</Text>
-          <Text weight={500}>{title}</Text>
-          <Text align="right" size="xs" color="dimmed">
+          <Text weight={500} size={18}>
+            Produto:
+          </Text>
+          <Text weight={480} size={18}>
+            {title}
+          </Text>
+          <Text align="left" size="xs" color="dimmed" mb={20}>
             {type}
           </Text>
 
-          <Text weight={450}>Descrição:</Text>
+          <Text weight={500} size={18}>
+            Descrição:
+          </Text>
           <Text weight={300}>{description}</Text>
 
           <Text
@@ -111,7 +115,7 @@ export function ProductDetails({
             size={40}
             weight={700}
             sx={{ lineHeight: 1 }}
-            mt={70}
+            mt={50}
           >
             R$ {price.toFixed(2).toString().replace(".", ",")}
           </Text>
@@ -123,10 +127,7 @@ export function ProductDetails({
             )}
           </Text>
         </div>
-        <Button
-          radius="sm"
-          size="xl"
-          style={{ flex: 1 }}
+        <StyledButton
           onClick={() => {
             showNotification({
               icon: <IconCheck />,
@@ -136,9 +137,9 @@ export function ProductDetails({
           }}
         >
           Adicionar
-          {<IconShoppingCartPlus style={{ marginLeft: "10px" }} />}{" "}
-        </Button>
-      </Group>
+          {<IconShoppingCartPlus style={{ marginLeft: "10px" }} />}
+        </StyledButton>
+      </StyledTitle>
     </SimpleGrid>
   );
 }

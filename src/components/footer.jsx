@@ -1,48 +1,42 @@
-import {
-  createStyles,
-  Container,
-  Group,
-  ActionIcon,
-  Text,
-} from "@mantine/core";
+import styled from "@emotion/styled";
+import { Container, Group, ActionIcon, Text } from "@mantine/core";
 import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons";
 
-const useStyles = createStyles((theme) => ({
-  footer: {
-    marginTop: 0,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
-    }`,
-  },
+const StyledFooter = styled.div`
+  margin-top: 60px;
+  border-top: 1px solid
+    ${({ theme }) =>
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[2]};
+`;
 
-  inner: {
-    flexDirection: "column",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: theme.spacing.xs,
-    paddingBottom: theme.spacing.xs,
+const StyledInner = styled(Container)`
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: ${({ theme }) => theme.spacing.xs};
+  padding-bottom: ${({ theme }) => theme.spacing.xs};
 
-    [theme.fn.smallerThan("xs")]: {
-      flexDirection: "column",
-    },
-  },
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
+    flex-direction: column;
+  }
+`;
 
-  links: {
-    [theme.fn.smallerThan("xs")]: {
-      marginTop: theme.spacing.md,
-    },
-  },
-}));
+const StyledLinks = styled(Group)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
+    margin-top: ${({ theme }) => theme.spacing.md};
+  }
+  gap: 0;
+`;
 
 export function FooterSocial() {
-  const { classes } = useStyles();
-
   return (
-    <div className={classes.footer}>
-      <Container className={classes.inner}>
+    <StyledFooter>
+      <StyledInner>
         <Text size={12}>Desenvolvido por Caio Gianelli</Text>
-        <Group spacing={0} className={classes.links} position="right" noWrap>
+        <StyledLinks noWrap>
           <ActionIcon
             component="a"
             target="_blank"
@@ -59,8 +53,8 @@ export function FooterSocial() {
           >
             <IconBrandGithub size={18} stroke={1.5} />
           </ActionIcon>
-        </Group>
-      </Container>
-    </div>
+        </StyledLinks>
+      </StyledInner>
+    </StyledFooter>
   );
 }

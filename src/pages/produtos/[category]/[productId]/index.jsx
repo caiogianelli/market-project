@@ -17,7 +17,6 @@ const ProductId = ({ products, type, id, items, setItems }) => {
         <Text size={25} mt={20} weight={600} color="orange">
           {products[0].title}
         </Text>
-
         {products
           .filter((product) => product.type === type && product.id === id)
           .map((product) => (

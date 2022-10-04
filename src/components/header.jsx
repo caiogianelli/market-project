@@ -1,5 +1,4 @@
 import {
-  createStyles,
   Header,
   Group,
   Burger,
@@ -19,58 +18,22 @@ import { SetIndicator } from "./indicator";
 import styled from "@emotion/styled";
 
 const StyledContainer = styled.div`
-  height: 56px;
+  height: 70px;
 `;
 
 const StyledHeader = styled(Header)`
   padding-left: ${(props) => props.theme.spacing.md}px;
   padding-right: ${(props) => props.theme.spacing.md}px;
-  padding-right: ${({ theme }) => theme.spacing.md}px;
-  height: 56px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0;
+  border-bottom-width: 2px;
 `;
-
-const useStyles = createStyles((theme) => ({
-  links: {
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
-  },
-
-  search: {
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
-    },
-  },
-
-  link: {
-    display: "block",
-    lineHeight: 1,
-    padding: "8px 12px",
-    borderRadius: theme.radius.sm,
-    textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
-  },
-}));
 
 export function HeaderSearch({ items, setItems }) {
   const [opened, setOpened] = useState(false);
-  const { classes } = useStyles();
   const [modal, setModal] = useState(false);
 
   return (
@@ -97,7 +60,7 @@ export function HeaderSearch({ items, setItems }) {
 
           <Link href={"/"}>
             <ActionIcon size={23}>
-              <IconHome size={34} stroke={1.5} />
+              <IconHome stroke={1.5} />
             </ActionIcon>
           </Link>
 

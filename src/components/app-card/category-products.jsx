@@ -1,10 +1,10 @@
+import styled from "@emotion/styled";
 import {
   Card,
   Image,
   Text,
   Group,
   Badge,
-  createStyles,
   Button,
   Tooltip,
 } from "@mantine/core";
@@ -12,74 +12,63 @@ import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
 
-const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    cursor: "pointer",
-    height: "340px",
-  },
+const StyledCard = styled(Card)`
+  background-color: ${({ theme }) => {
+    theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white;
+  }};
+  cursor: pointer;
+  height: 340px;
+  margin-top: 20px;
+  padding: 0px 16px 16px 16px;
+`;
 
-  cardTitle: {
-    alignItems: "flex-start",
-    height: "30px",
-    display: "inline-table",
-    marginTop: "5px",
-    marginBottom: "5px",
-  },
+const StyledCardTitle = styled(Group)`
+  align-items: flex-start;
+  height: 30px;
+  display: inline-table;
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
 
-  imageSection: {
-    display: "flex",
-    height: "200px",
-    overflow: "hidden",
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
-  },
-
-  label: {
-    marginBottom: theme.spacing.xs,
-    lineHeight: 1,
-    fontWeight: 700,
-    fontSize: theme.fontSizes.xs,
-    letterSpacing: -0.25,
-    textTransform: "uppercase",
-  },
-
-  priceBuyContainer: {
-    padding: "8px",
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
-    height: "35px",
-    marginBottom: "5px",
-    gap: "20px",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignContent: "center",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  buttonPrice: {
-    borderRadius: "4px",
-    width: "100%",
-    height: "35px",
-    paddingLeft: "45px",
-    paddingRight: "45px",
-  },
-
-  icon: {
-    marginRight: 5,
-    color:
+const StyledImageSection = styled(Card.Section)`
+  display: flex;
+  height: 200px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid
+    ${({ theme }) => {
       theme.colorScheme === "dark"
-        ? theme.colors.dark[2]
-        : theme.colors.gray[5],
-  },
-}));
+        ? theme.colors.dark[4]
+        : theme.colors.gray[3];
+    }};
+`;
+
+const StyledPriceContainer = styled(Card.Section)`
+  padding: 8px;
+  border-top: 1px solid
+    ${({ theme }) => {
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[4]
+        : theme.colors.gray[3];
+    }};
+  height: 35px;
+  margin-bottom: 5px;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledButton = styled(Button)`
+  border-radius: 4px;
+  width: 100%;
+  height: 35px;
+  padding-left: 45px;
+  padding-right: 45px;
+`;
 
 export function CategoryProducts({
   image,
@@ -92,8 +81,6 @@ export function CategoryProducts({
   items,
   setItems,
 }) {
-  const { classes } = useStyles();
-
   function addToCart() {
     let product = {
       image,
@@ -121,14 +108,14 @@ export function CategoryProducts({
   }
 
   return (
-    <Card withBorder className={classes.card} mt={40}>
-      <Card.Section className={classes.imageSection}>
+    <StyledCard withBorder>
+      <StyledImageSection>
         <Link href={`/produtos/${type}/${id}`}>
           <Image src={image} alt={image} />
         </Link>
-      </Card.Section>
+      </StyledImageSection>
 
-      <Group className={classes.cardTitle}>
+      <StyledCardTitle>
         <div>
           <Tooltip
             multiline
@@ -147,9 +134,9 @@ export function CategoryProducts({
             {type}
           </Text>
         </div>
-      </Group>
+      </StyledCardTitle>
 
-      <Card.Section className={classes.priceBuyContainer}>
+      <StyledPriceContainer>
         <div>
           <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
             R$ {price.toFixed(2).toString().replace(".", ",")}
@@ -158,11 +145,10 @@ export function CategoryProducts({
         <div>
           {offer != 0 && <Badge variant="outline">{offer} % OFF</Badge>}
         </div>
-      </Card.Section>
+      </StyledPriceContainer>
 
-      <Card.Section className={classes.priceBuyContainer}>
-        <Button
-          className={classes.buttonPrice}
+      <StyledPriceContainer>
+        <StyledButton
           onClick={() => {
             showNotification({
               icon: <IconCheck />,
@@ -173,8 +159,8 @@ export function CategoryProducts({
         >
           Adicionar
           {<IconShoppingCartPlus size={18} style={{ marginLeft: "10px" }} />}
-        </Button>
-      </Card.Section>
-    </Card>
+        </StyledButton>
+      </StyledPriceContainer>
+    </StyledCard>
   );
 }
