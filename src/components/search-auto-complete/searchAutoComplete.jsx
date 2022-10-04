@@ -1,13 +1,16 @@
 import { forwardRef } from "react";
-import { Group, Avatar, Text, Autocomplete, createStyles } from "@mantine/core";
+import { Group, Avatar, Text, Autocomplete } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import styled from "@emotion/styled";
 
-const useStyles = createStyles((theme) => ({
-  search: { [theme.fn.smallerThan("xs")]: { display: "none" } },
-}));
+const StyledSearch = styled(Autocomplete)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
+    display: none;
+  }
+`;
 
 // eslint-disable-next-line react/display-name
 const AutoCompleteItem = forwardRef(({ value, image, ...others }, ref) => (
@@ -23,7 +26,6 @@ const AutoCompleteItem = forwardRef(({ value, image, ...others }, ref) => (
 ));
 
 export function SearchAutoComplete() {
-  const { classes } = useStyles();
   const [searchItems, setSeachItems] = useState([]);
   const [termoDeBusca, setTermoDeBusca] = useState();
   const router = useRouter();
@@ -46,11 +48,10 @@ export function SearchAutoComplete() {
   }, [termoDeBusca]);
 
   return (
-    <Autocomplete
+    <StyledSearch
       value={termoDeBusca}
       onChange={setTermoDeBusca}
       placeholder="Buscar"
-      className={classes.search}
       icon={<IconSearch size={20} stroke={1.5} />}
       itemComponent={AutoCompleteItem}
       onItemSubmit={(item) => router.push(`/produtos/${item.type}/${item.id}`)}

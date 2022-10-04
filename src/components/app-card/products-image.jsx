@@ -1,43 +1,38 @@
-import { Card, createStyles } from "@mantine/core";
-import Link from "next/link";
+import styled from "@emotion/styled";
+import { Card } from "@mantine/core";
 
-const useStyles = createStyles((theme) => ({
-  card: {
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[1],
-    height: "250px",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-  },
+const StyledCard = styled(Card)`
+  cursor: pointer;
+  display: flex;
+  margin-top: 13px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) =>
+    theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[1]};
+`;
 
-  imageSection: {
-    display: "flex",
-    height: "200%",
-    overflow: "hidden",
-    alignItems: "center",
-    borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
-  },
-  image: {
-    width: "100%",
-    minHeight: "270px",
-    height: "auto",
-    objectFit: "cover",
-  },
-}));
+const StyledImageSection = styled(Card.Section)`
+  display: flex;
+  height: 200px;
+  overflow: hidden;
+  align-items: center;
+  background-color: ${({ theme }) =>
+    theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]};
+`;
 
-export function ProductsImage({ image, type }) {
-  const { classes } = useStyles();
+const StyledImage = styled.img`
+  width: 100%;
+  min-height: 270px;
+  height: auto;
+  object-fit: cover;
+`;
 
+export function ProductsImage({ image }) {
   return (
-    <Card withBorder className={classes.card} mt={13} p={0}>
-      <Card.Section className={classes.imageSection}>
-        <img className={classes.image} src={image} alt={image} />
-      </Card.Section>
-    </Card>
+    <StyledCard withBorder p={0}>
+      <StyledImageSection>
+        <StyledImage src={image} alt={image} />
+      </StyledImageSection>
+    </StyledCard>
   );
 }

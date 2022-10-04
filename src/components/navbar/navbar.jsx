@@ -1,4 +1,5 @@
-import { Navbar, Group, ScrollArea, createStyles } from "@mantine/core";
+import styled from "@emotion/styled";
+import { Navbar, Group, ScrollArea } from "@mantine/core";
 import { IconNotes, IconHome2, IconLock, IconPercentage } from "@tabler/icons";
 import { SearchAutoComplete } from "../search-auto-complete/searchAutoComplete";
 import { LinksGroup } from "./NavbarLinksGroup";
@@ -32,39 +33,17 @@ const mockdata = [
   },
 ];
 
-const useStyles = createStyles((theme) => ({
-  header: {
-    padding: theme.spacing.md,
-    paddingTop: 0,
-    marginLeft: -theme.spacing.md,
-    marginRight: -theme.spacing.md,
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
-  },
+const StyledLinks = styled(Navbar.Section)`
+  margin-left: ${({ theme }) => theme.spacing.md};
+  margin-right: ${({ theme }) => theme.spacing.md};
+`;
 
-  links: {
-    marginLeft: -theme.spacing.md,
-    marginRight: -theme.spacing.md,
-  },
-
-  linksInner: {
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
-  },
-
-  footer: {
-    marginLeft: -theme.spacing.md,
-    marginRight: -theme.spacing.md,
-    borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
-  },
-}));
+const StyledInner = styled.div`
+  padding-top: ${({ theme }) => theme.spacing.xl};
+  padding-bottom: ${({ theme }) => theme.spacing.xl};
+`;
 
 export function NavbarNested() {
-  const { classes } = useStyles();
   const links = mockdata.map((item) => (
     <LinksGroup {...item} key={item.label} />
   ));
@@ -74,9 +53,9 @@ export function NavbarNested() {
       <Navbar width={{ sm: 300 }} p="md">
         <SearchAutoComplete />
 
-        <Navbar.Section grow className={classes.links} component={ScrollArea}>
-          <div className={classes.linksInner}>{links}</div>
-        </Navbar.Section>
+        <StyledLinks grow component={ScrollArea}>
+          <StyledInner>{links}</StyledInner>
+        </StyledLinks>
       </Navbar>
     </Group>
   );

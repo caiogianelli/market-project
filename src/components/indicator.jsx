@@ -3,10 +3,10 @@ import Link from "next/link";
 import { IconShoppingCart } from "@tabler/icons";
 
 export function SetIndicator({ items }) {
-  const batata = items.map((batatinha) => batatinha.amount);
+  const contador = items.map((num) => num.amount);
   let count = 0;
-  for (const frango of batata) {
-    count += frango;
+  for (const quantidade of contador) {
+    count += quantidade;
   }
   return (
     <Indicator
@@ -19,7 +19,7 @@ export function SetIndicator({ items }) {
     >
       <Link href={"/cart"}>
         <ActionIcon size={23}>
-          <IconShoppingCart size={34} stroke={1.5} />
+          <IconShoppingCart stroke={1.5} />
         </ActionIcon>
       </Link>
     </Indicator>
