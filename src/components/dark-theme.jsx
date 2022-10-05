@@ -8,7 +8,7 @@ export default function ThemeDark() {
   return (
     <ActionIcon
       variant="outline"
-      color={dark ? "yellow" : "blue"}
+      color={dark ? "orange" : "gray"}
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >
