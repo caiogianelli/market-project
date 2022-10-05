@@ -1,6 +1,7 @@
 import { ActionIcon, Avatar, Group, Text } from "@mantine/core";
 import { IconMinus, IconPlus, IconTrash } from "@tabler/icons";
 import Link from "next/link";
+import { formatMoney } from "../../utils/format-money";
 
 export function CartItem({ item, setItems }) {
   function increaseAmount() {
@@ -44,9 +45,7 @@ export function CartItem({ item, setItems }) {
     let products = localStorage.getItem("items");
     products = JSON.parse(products);
 
-    const todosOsItensQueNaoEOAtual = products.filter(
-      (batata) => item.id !== batata.id
-    );
+    const todosOsItensQueNaoEOAtual = products.filter((batata) => item.id !== batata.id);
 
     localStorage.setItem("items", JSON.stringify(todosOsItensQueNaoEOAtual));
     setItems(todosOsItensQueNaoEOAtual);
@@ -70,12 +69,7 @@ export function CartItem({ item, setItems }) {
       <td align="center" width={50}>
         <Text size="md" weight={300} style={{ minWidth: "10px" }}>
           <ActionIcon style={{ display: "contents" }} onClick={decreaseAmount}>
-            <IconMinus
-              stroke={1.5}
-              color="orange"
-              size={18}
-              style={{ marginRight: "10px" }}
-            />
+            <IconMinus stroke={1.5} color="orange" size={18} style={{ marginRight: "10px" }} />
           </ActionIcon>
           {item.amount}
           <ActionIcon style={{ display: "contents" }} onClick={increaseAmount}>
@@ -90,8 +84,7 @@ export function CartItem({ item, setItems }) {
       </td>
       <td align="center" width={150}>
         <Text size="sm" weight={500} style={{ minWidth: "70px" }}>
-          {(item.price * item.amount).toFixed(2).toString().replace(".", ",")}{" "}
-          R$
+          {formatMoney(item.price * item.amount)} R$
         </Text>
       </td>
       <td align="center" style={{ width: "30px" }}>

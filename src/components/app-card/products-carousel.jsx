@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Card, Image, Text, Group, Badge, Tooltip } from "@mantine/core";
 import Link from "next/link";
+import { formatMoney } from "../../utils/format-money";
 
 const StyledCard = styled(Card)`
   background-color: ${({ theme }) =>
@@ -17,10 +18,7 @@ const StyledImage = styled(Card.Section)`
   overflow: hidden;
   justify-content: center;
   border-bottom: 1px solid
-    ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[6]
-        : theme.colors.gray[1]};
+    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[1])};
 `;
 
 const StyledTitle = styled(Group)`
@@ -35,10 +33,7 @@ const StyledTitle = styled(Group)`
 const StyledPrice = styled(Card.Section)`
   padding: ${({ theme }) => theme.spacing.sm};
   border-top: 1px solid
-    ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[4]
-        : theme.colors.gray[3]};
+    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
   height: 50px;
   margin: 10px;
   display: flex;
@@ -50,7 +45,7 @@ export function ProductsCarousel({ image, title, price, type, offer, id }) {
     <StyledCard withBorder p={0}>
       <Link href={`/produtos/${type}/${id}`}>
         <StyledImage>
-          <Image src={image} alt={image} />
+          <Image src={image[0]} alt={image[0]} />
         </StyledImage>
       </Link>
 
@@ -71,7 +66,7 @@ export function ProductsCarousel({ image, title, price, type, offer, id }) {
         <Group>
           <div>
             <Text size="22px" weight={600} sx={{ lineHeight: 1 }}>
-              R$ {price.toFixed(2).toString().replace(".", ",")}
+              R$ {formatMoney(price)}
             </Text>
           </div>
 

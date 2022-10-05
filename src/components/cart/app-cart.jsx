@@ -1,5 +1,6 @@
 import { Table, Text, ScrollArea, Button, Box, Container } from "@mantine/core";
 import { IconTrash } from "@tabler/icons";
+import { formatMoney } from "../../utils/format-money";
 import { CartItem } from "./cart-item";
 
 export function AppCart({ items, setItems }) {
@@ -50,15 +51,8 @@ export function AppCart({ items, setItems }) {
           style={{ flex: 1 }}
           onClick={removeAllItem}
         >
-          {
-            <IconTrash
-              stroke={1.5}
-              size={18}
-              style={{ marginRight: "10px" }}
-              color="orange"
-            />
-          }{" "}
-          Limpar Carrinho
+          {<IconTrash stroke={1.5} size={18} style={{ marginRight: "10px" }} color="orange" />} Limpar
+          Carrinho
         </Button>
       </Box>
       <Table striped verticalSpacing="sm">
@@ -90,9 +84,7 @@ export function AppCart({ items, setItems }) {
               <Text align="center">{amountTotal}</Text>
             </th>
             <th>
-              <Text align="center">
-                {priceTotal.toFixed(2).toString().replace(".", ",")} R$
-              </Text>
+              <Text align="center">{formatMoney(priceTotal)} R$</Text>
             </th>
             <th></th>
           </tr>

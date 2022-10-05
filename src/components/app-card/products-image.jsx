@@ -31,7 +31,7 @@ export function ProductsImage({ image }) {
   return (
     <StyledCard withBorder p={0}>
       <StyledImageSection>
-        <StyledImage src={image} alt={image} />
+        <StyledImage src={image[0]} alt={image[0]} />
       </StyledImageSection>
     </StyledCard>
   );

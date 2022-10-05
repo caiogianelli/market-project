@@ -35,7 +35,7 @@ export function CategoryCarousel({ category }) {
           </Link>
         ))}
       </Carousel>
-      <Text align="center" size={20} color="orange">
+      <Text align="center" size={20}>
         {category.name[0].toUpperCase() + category.name.substring(1)}
       </Text>
     </div>
