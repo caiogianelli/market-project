@@ -12,9 +12,7 @@ export default function Home({ products, items, setItems }) {
 
   let categories = [];
   products.forEach((bat) => {
-    const categoryIndexFound = categories.findIndex(
-      (category) => category.name === bat.type
-    );
+    const categoryIndexFound = categories.findIndex((category) => category.name === bat.type);
 
     if (categoryIndexFound === -1) {
       categories.push({
@@ -50,7 +48,8 @@ export default function Home({ products, items, setItems }) {
           cols={4}
           breakpoints={[
             { maxWidth: "lg", cols: 3 },
-            { maxWidth: "md", cols: 2 },
+            { maxWidth: "md", cols: 3 },
+            { maxWidth: "sm", cols: 2 },
             { maxWidth: "xs", cols: 1 },
           ]}
         >
@@ -58,23 +57,13 @@ export default function Home({ products, items, setItems }) {
             .filter((product) => product.offer !== 0)
             .slice(0, itemsLimit)
             .map((product) => (
-              <CategoryProducts
-                items={items}
-                setItems={setItems}
-                key={product.id}
-                {...product}
-              />
+              <CategoryProducts items={items} setItems={setItems} key={product.id} {...product} />
             ))}
         </SimpleGrid>
 
         {itemsLimit !== products.length && (
           <Container align="center">
-            <Button
-              variant="subtle"
-              align="center"
-              mb={10}
-              onClick={() => setItemsLimit(products.length)}
-            >
+            <Button variant="subtle" align="center" mb={10} onClick={() => setItemsLimit(products.length)}>
               Ver mais
             </Button>
           </Container>

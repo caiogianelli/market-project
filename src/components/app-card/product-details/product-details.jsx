@@ -47,7 +47,7 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
     >
       <S.Card>
         <S.Image>{<Image src={minImage} alt={minImage} />}</S.Image>
-        {image.length > 1 ? (
+        {image.length > 1 && (
           <S.Group>
             {image.map((img) => (
               <S.Btn onClick={() => setMinImage(img)} key={img}>
@@ -55,8 +55,6 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
               </S.Btn>
             ))}
           </S.Group>
-        ) : (
-          <></>
         )}
       </S.Card>
 
@@ -100,7 +98,7 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
             </Text>
           </ScrollArea>
 
-          <Text align="right" mt={50}>
+          <Text align="right" mt={10}>
             {offer != 0 && (
               <Badge variant="outline" p={"0 5px"}>
                 {offer} % OFF

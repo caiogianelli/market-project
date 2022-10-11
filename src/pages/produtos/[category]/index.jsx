@@ -27,13 +27,7 @@ const Category = ({ products, items, setItems }) => {
           ]}
         >
           {products.map((product) => (
-            <CategoryProducts
-              items={items}
-              setItems={setItems}
-              size="100%"
-              key={product.id}
-              {...product}
-            />
+            <CategoryProducts items={items} setItems={setItems} size="100%" key={product.id} {...product} />
           ))}
         </SimpleGrid>
       </Container>
