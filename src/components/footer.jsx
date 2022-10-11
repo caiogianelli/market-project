@@ -5,10 +5,7 @@ import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons";
 const StyledFooter = styled.div`
   margin-top: 60px;
   border-top: 1px solid
-    ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[5]
-        : theme.colors.gray[2]};
+    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2])};
 `;
 
 const StyledInner = styled(Container)`
@@ -18,6 +15,7 @@ const StyledInner = styled(Container)`
   align-items: center;
   padding-top: ${({ theme }) => theme.spacing.xs};
   padding-bottom: ${({ theme }) => theme.spacing.xs};
+  height: 70px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
     flex-direction: column;
@@ -45,12 +43,7 @@ export function FooterSocial() {
           >
             <IconBrandLinkedin size={18} stroke={1.5} href="" />
           </ActionIcon>
-          <ActionIcon
-            component="a"
-            target="_blank"
-            size="lg"
-            href="https://github.com/caiogianelli"
-          >
+          <ActionIcon component="a" target="_blank" size="lg" href="https://github.com/caiogianelli">
             <IconBrandGithub size={18} stroke={1.5} />
           </ActionIcon>
         </StyledLinks>

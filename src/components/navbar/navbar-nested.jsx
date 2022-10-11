@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { Navbar, Group, ScrollArea } from "@mantine/core";
+import { Navbar, Group } from "@mantine/core";
 import { IconNotes, IconHome2, IconLock, IconPercentage } from "@tabler/icons";
 import { SearchAutoComplete } from "../search-auto-complete/searchAutoComplete";
-import { LinksGroup } from "./NavbarLinksGroup";
+import { LinksGroup } from "./LinksGroup";
 
 const mockdata = [
   {
@@ -33,29 +33,22 @@ const mockdata = [
   },
 ];
 
-const StyledLinks = styled(Navbar.Section)`
-  margin-left: ${({ theme }) => theme.spacing.md};
-  margin-right: ${({ theme }) => theme.spacing.md};
-`;
-
 const StyledInner = styled.div`
-  padding-top: ${({ theme }) => theme.spacing.xl};
-  padding-bottom: ${({ theme }) => theme.spacing.xl};
+  padding-top: ${({ theme }) => theme.spacing.sm}px;
+  padding-bottom: ${({ theme }) => theme.spacing.sm}px;
 `;
 
-export function NavbarNested() {
-  const links = mockdata.map((item) => (
-    <LinksGroup {...item} key={item.label} />
-  ));
+export function NavbarNested({ closeBar, hiddenSeach }) {
+  const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} closeBar={closeBar} />);
 
   return (
     <Group>
-      <Navbar width={{ sm: 300 }} p="md">
-        <SearchAutoComplete />
+      <Navbar withBorder={false}>
+        <SearchAutoComplete hiddenSeach={hiddenSeach} />
 
-        <StyledLinks grow component={ScrollArea}>
+        <Navbar.Section>
           <StyledInner>{links}</StyledInner>
-        </StyledLinks>
+        </Navbar.Section>
       </Navbar>
     </Group>
   );

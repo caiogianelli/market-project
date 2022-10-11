@@ -3,24 +3,20 @@ import { Group, Box, Collapse, ThemeIcon, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons";
 import Link from "next/link";
 import styled from "@emotion/styled";
+import { transientConfig } from "../../utils/styled-transient-config";
 
 const StyledControl = styled(UnstyledButton)`
   font-weight: 700;
   display: block;
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.xs}px
-    ${({ theme }) => theme.spacing.md}px;
-  color: ${({ theme }) =>
-    theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black};
+  padding: ${({ theme }) => theme.spacing.xs}px 0px;
+  color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black)};
   font-size: ${({ theme }) => theme.fontSizes.sm};
 
   &:hover {
     background-color: ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[7]
-        : theme.colors.gray[0]};
-    color: ${({ theme }) =>
-      theme.colorScheme === "dark" ? theme.white : theme.black};
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[0]};
+    color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.black)};
   }
 `;
 
@@ -36,45 +32,31 @@ const StyledLink = styled.a`
 
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.md}px`};
 
-  color: ${({ theme }) =>
-    theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7]};
+  color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7])};
 
   border-left: 1px solid
-    ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[4]
-        : theme.colors.gray[3]};
+    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
 
   &:hover {
     background-color: ${({ theme }) =>
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[7]
-        : theme.colors.gray[0]};
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[0]};
 
-    color: ${({ theme }) =>
-      theme.colorScheme === "dark" ? theme.white : theme.black};
+    color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.black)};
   }
 `;
 
-const ChevronIcon = styled(IconChevronRight)`
+const ChevronIcon = styled(IconChevronRight, transientConfig)`
   transition: transform 200ms ease;
-  transform: ${({ opened }) => (opened ? "rotate(90deg)" : "none")};
+  transform: ${({ $opened }) => ($opened ? "rotate(90deg)" : "none")};
 `;
 
 const StyledBox = styled(Box)`
   min-height: 220px;
   padding: ${({ theme }) => theme.spacing.md};
-  background-color: ${({ theme }) =>
-    theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white};
+  background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white)};
 `;
 
-export function LinksGroup({
-  icon: Icon,
-  label,
-  initiallyOpened,
-  links,
-  link,
-}) {
+export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, closeBar }) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const items = (hasLinks ? links : []).map((link) => (
@@ -105,11 +87,15 @@ export function LinksGroup({
             </Box>
           )}
 
-          {hasLinks && <ChevronIcon size={14} stroke={1.5} opened={opened} />}
+          {hasLinks && <ChevronIcon size={14} stroke={1.5} $opened={opened} />}
         </Group>
       </StyledControl>
 
-      {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+      {hasLinks && (
+        <Collapse onClick={closeBar} in={opened}>
+          {items}
+        </Collapse>
+      )}
     </>
   );
 }

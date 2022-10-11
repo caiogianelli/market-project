@@ -21,10 +21,7 @@ export function CategoryCarousel({ category }) {
         breakpoints={[
           { maxWidth: "lg", slideSize: "100%" },
           { maxWidth: "md", slideSize: "100%" },
-          {
-            maxWidth: "xs",
-            slideSize: "100%",
-          },
+          { maxWidth: "xs", slideSize: "100%" },
         ]}
       >
         {category.images.map((image) => (
@@ -35,9 +32,11 @@ export function CategoryCarousel({ category }) {
           </Link>
         ))}
       </Carousel>
-      <Text align="center" size={20}>
-        {category.name[0].toUpperCase() + category.name.substring(1)}
-      </Text>
+      <Link href={`/produtos/${category.name}`} key={category.id}>
+        <Text align="center" size={20} style={{ cursor: "pointer" }}>
+          {category.name[0].toUpperCase() + category.name.substring(1)}
+        </Text>
+      </Link>
     </div>
   );
 }

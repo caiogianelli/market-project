@@ -21,13 +21,7 @@ const ProductId = ({ products, type, id, items, setItems }) => {
         {products
           .filter((product) => product.type === type && product.id === id)
           .map((product) => (
-            <ProductDetails
-              items={items}
-              setItems={setItems}
-              size="100%"
-              key={product.id}
-              {...product}
-            />
+            <ProductDetails items={items} setItems={setItems} size="100%" key={product.id} {...product} />
           ))}
       </Container>
       <FooterSocial />
