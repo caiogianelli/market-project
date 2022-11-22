@@ -4,7 +4,7 @@ Protótipo de website de compras, com produtos, adicionar e remover produtos no 
 
 ## 📁 Acesso ao projeto
 
-Esse é um repoistório público e você pode acessar a qualquer momento clicando <a href="https://github.com/caiogianelli/market-project">aqui</a>.
+Esse é um repositório público e você pode acessar a qualquer momento clicando <a href="https://github.com/caiogianelli/market-project">aqui</a>.
 
 ## ⚡ Projeto iniciado com Next.js
 
