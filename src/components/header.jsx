@@ -1,45 +1,26 @@
-import { Header, Group, Burger, Modal, Drawer, ActionIcon, Button } from "@mantine/core";
+// vendors
+import { Group, Burger, Modal, ActionIcon, Button } from "@mantine/core";
 import Link from "next/link";
 import { IconHome, IconLogin } from "@tabler/icons";
 import { useState } from "react";
-import { AuthenticationTitle } from "./create-account/authentication";
+
+// components
 import DarkTheme from "./dark-theme";
 import { NavbarNested } from "./navbar/navbar-nested";
-import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
 import { SetIndicator } from "./indicator";
-import styled from "@emotion/styled";
+import { AuthenticationTitle } from "./create-account/authentication";
+import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
 
-const S = {};
-
-S.Container = styled.div`
-  height: 70px;
-`;
-
-S.Header = styled(Header)`
-  padding-left: ${(props) => props.theme.spacing.md}px;
-  padding-right: ${(props) => props.theme.spacing.md}px;
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0;
-  border-bottom-width: 2px;
-`;
-
-S.GroupDrawer = styled(Drawer)`
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
-    width: 1000px;
-    max-width: 100%;
-  }
-`;
+// styles
+import * as S from "./styles"
 
 export function HeaderSearch({ items, setItems }) {
   const [opened, setOpened] = useState(false);
   const [modal, setModal] = useState(false);
 
   return (
-    <S.Container>
-      <S.Header fixed>
+    <S.StyledContainer>
+      <S.StyledHeader fixed>
         <Group position="left">
           <Burger opened={opened} size="sm" onClick={() => setOpened(true)} />
         </Group>
@@ -77,7 +58,7 @@ export function HeaderSearch({ items, setItems }) {
             <DarkTheme />
           </Group>
         </Group>
-      </S.Header>
-    </S.Container>
+      </S.StyledHeader>
+    </S.StyledContainer>
   );
 }

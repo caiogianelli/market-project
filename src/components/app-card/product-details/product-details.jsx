@@ -1,11 +1,14 @@
+// vendors
 import { useState } from "react";
 import { Image, Text, Badge, ScrollArea } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 
+// components
 import { Parcel } from "./parcel";
 import { formatMoney } from "../../../utils/format-money";
 
+// style
 import * as S from "./styles";
 
 export function ProductDetails({ image, title, price, type, offer, id, description, items, setItems }) {
@@ -22,13 +25,16 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
       description,
       amount: 1,
     };
+
     const todosOsItensQueNaoEOAtual = items.filter((item) => product.id !== item.id);
     let newProductInCart = items.find((item) => product.id === item.id);
+
     if (newProductInCart) {
       newProductInCart["amount"] += 1;
     } else {
       newProductInCart = product;
     }
+
     const newItems = [newProductInCart, ...todosOsItensQueNaoEOAtual];
 
     localStorage.setItem("items", JSON.stringify(newItems));
@@ -75,6 +81,7 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
           <Text weight={500} size={18}>
             Descrição:
           </Text>
+          
           <ScrollArea
             style={{ height: 170 }}
             styles={(theme) => ({

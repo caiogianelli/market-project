@@ -1,4 +1,7 @@
+// vendors
 import { Container } from "@mantine/core";
+
+// components
 import { AppCart } from "../components/cart/app-cart";
 import { FooterSocial } from "../components/footer";
 import { HeaderSearch } from "../components/header";

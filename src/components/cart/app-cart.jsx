@@ -1,5 +1,8 @@
+// vendors
 import { Table, Text, ScrollArea, Button, Box, Container } from "@mantine/core";
 import { IconTrash } from "@tabler/icons";
+
+// components
 import { formatMoney } from "../../utils/format-money";
 import { CartItem } from "./cart-item";
 
@@ -55,6 +58,7 @@ export function AppCart({ items, setItems }) {
           Carrinho
         </Button>
       </Box>
+      
       <Table striped verticalSpacing="sm">
         <thead>
           <tr>

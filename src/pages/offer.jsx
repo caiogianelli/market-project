@@ -1,8 +1,13 @@
+// vendors
+import { Container, SimpleGrid, Text } from "@mantine/core";
+
+// components
 import { HeaderSearch } from "../components/header";
 import { FooterSocial } from "../components/footer";
-import { Container, SimpleGrid, Text } from "@mantine/core";
+import { CategoryProducts } from "../components/app-card/category-products/category-products";
+
+// api
 import { getProducts } from "./api/product";
-import { CategoryProducts } from "../components/app-card/category-products";
 
 export default function Home({ products, items, setItems }) {
   return (

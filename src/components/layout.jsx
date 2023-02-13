@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+// components
 import { FooterSocial } from "./footer";
 import { HeaderSearch } from "./header";
 

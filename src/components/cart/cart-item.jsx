@@ -1,6 +1,9 @@
+// vendors
 import { ActionIcon, Avatar, Group, Text } from "@mantine/core";
 import { IconMinus, IconPlus, IconTrash } from "@tabler/icons";
 import Link from "next/link";
+
+// components
 import { formatMoney } from "../../utils/format-money";
 
 export function CartItem({ item, setItems }) {
@@ -82,11 +85,13 @@ export function CartItem({ item, setItems }) {
           </ActionIcon>
         </Text>
       </td>
+
       <td align="center" width={150}>
         <Text size="sm" weight={500} style={{ minWidth: "70px" }}>
           {formatMoney(item.price * item.amount)} R$
         </Text>
       </td>
+      
       <td align="center" style={{ width: "30px" }}>
         <ActionIcon onClick={removeItem}>
           <IconTrash stroke={1.5} color="orange" />

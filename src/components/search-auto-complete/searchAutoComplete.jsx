@@ -1,11 +1,13 @@
+// vendors
 import { forwardRef } from "react";
-import { Group, Avatar, Text, Autocomplete } from "@mantine/core";
+import { Group, Avatar, Text } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import styled from "@emotion/styled";
-import { transientConfig } from "../../utils/styled-transient-config";
+
+// style
+import * as S from "./styles"
 
 // eslint-disable-next-line react/display-name
 const AutoCompleteItem = forwardRef(({ value, image, ...others }, ref) => (
@@ -19,12 +21,6 @@ const AutoCompleteItem = forwardRef(({ value, image, ...others }, ref) => (
     </Group>
   </div>
 ));
-
-const StyledSearch = styled(Autocomplete, transientConfig)`
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}px) {
-    display: ${({ $hiddenSeach }) => ($hiddenSeach !== true ? "none" : "block")};
-  }
-`;
 
 export function SearchAutoComplete({ hiddenSeach }) {
   const [searchItems, setSeachItems] = useState([]);
@@ -50,7 +46,7 @@ export function SearchAutoComplete({ hiddenSeach }) {
   }, [termoDeBusca]);
 
   return (
-    <StyledSearch
+    <S.StyledSearch
       value={termoDeBusca}
       onChange={setTermoDeBusca}
       $hiddenSeach={hiddenSeach}
