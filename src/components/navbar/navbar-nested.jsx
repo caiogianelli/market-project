@@ -47,7 +47,7 @@ export function NavbarNested({ closeBar, hiddenSeach }) {
         <SearchAutoComplete hiddenSeach={hiddenSeach} />
 
         <Navbar.Section>
-          <S.StyledInner>{links}</S.StyledInner>
+          <S.Inner>{links}</S.Inner>
         </Navbar.Section>
       </Navbar>
     </Group>

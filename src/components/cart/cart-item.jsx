@@ -59,6 +59,7 @@ export function CartItem({ item, setItems }) {
       <td width={570}>
         <Group spacing="sm" style={{ flexWrap: "inherit" }}>
           <Avatar size={40} src={item.image} radius={5} />
+
           <div>
             <Text size="sm" weight={500} lineClamp={2}>
               <Link href={`/produtos/${item.type}/${item.id}`}>
@@ -66,6 +67,7 @@ export function CartItem({ item, setItems }) {
               </Link>
             </Text>
           </div>
+          
         </Group>
       </td>
 
@@ -74,7 +76,9 @@ export function CartItem({ item, setItems }) {
           <ActionIcon style={{ display: "contents" }} onClick={decreaseAmount}>
             <IconMinus stroke={1.5} color="orange" size={18} style={{ marginRight: "10px" }} />
           </ActionIcon>
+
           {item.amount}
+
           <ActionIcon style={{ display: "contents" }} onClick={increaseAmount}>
             <IconPlus
               stroke={1.5}

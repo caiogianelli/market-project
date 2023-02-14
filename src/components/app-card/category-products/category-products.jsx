@@ -1,5 +1,5 @@
 // vendors
-import { Image, Text, Badge, Tooltip } from "@mantine/core";
+import { Text, Badge, Tooltip } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
@@ -36,14 +36,14 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
   }
 
   return (
-    <S.StyledCard withBorder>
-      <S.StyledImageSection>
+    <S.Card withBorder>
+      <S.ImageSection>
         <Link href={`/produtos/${type}/${id}`}>
-          <Image src={image[0]} alt={image[0]} />
+          <S.Image src={image[0]} alt={image[0]} />
         </Link>
-      </S.StyledImageSection>
+      </S.ImageSection>
 
-      <S.StyledCardTitle>
+      <S.CardTitle>
         <div>
           <Tooltip
             multiline
@@ -62,19 +62,19 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
             {type}
           </Text>
         </div>
-      </S.StyledCardTitle>
+      </S.CardTitle>
 
-      <S.StyledPriceContainer>
+      <S.PriceContainer>
         <div>
           <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
             R$ {formatMoney(price)}
           </Text>
         </div>
         <div>{offer != 0 && <Badge variant="outline">{offer} % OFF</Badge>}</div>
-      </S.StyledPriceContainer>
+      </S.PriceContainer>
 
-      <S.StyledPriceContainer>
-        <S.StyledButton
+      <S.PriceContainer>
+        <S.Button
           onClick={() => {
             showNotification({
               icon: <IconCheck />,
@@ -85,8 +85,8 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
         >
           Adicionar
           {<IconShoppingCartPlus size={18} style={{ marginLeft: "10px" }} />}
-        </S.StyledButton>
-      </S.StyledPriceContainer>
-    </S.StyledCard>
+        </S.Button>
+      </S.PriceContainer>
+    </S.Card>
   );
 }

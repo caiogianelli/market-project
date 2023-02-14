@@ -7,10 +7,10 @@ import * as S from "./styles"
 
 export function FooterSocial() {
   return (
-    <S.StyledFooter>
-      <S.StyledInner>
+    <S.Footer>
+      <S.Inner>
         <Text size={12}>Desenvolvido por Caio Gianelli</Text>
-        <S.StyledLinks noWrap>
+        <S.Links noWrap>
           <ActionIcon
             component="a"
             target="_blank"
@@ -22,8 +22,8 @@ export function FooterSocial() {
           <ActionIcon component="a" target="_blank" size="lg" href="https://github.com/caiogianelli">
             <IconBrandGithub size={18} stroke={1.5} />
           </ActionIcon>
-        </S.StyledLinks>
-      </S.StyledInner>
-    </S.StyledFooter>
+        </S.Links>
+      </S.Inner>
+    </S.Footer>
   );
 }

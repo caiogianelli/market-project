@@ -1,12 +1,12 @@
 // vendors
 import { IconChevronRight } from "@tabler/icons";
-import { Box, UnstyledButton } from "@mantine/core";
+import { Box as MantineBox, UnstyledButton } from "@mantine/core";
 import styled from "@emotion/styled";
 
 // components
 import { transientConfig } from "../../utils/styled-transient-config";
 
-export const StyledControl = styled(UnstyledButton)`
+export const Control = styled(UnstyledButton)`
   font-weight: 700;
   display: block;
   width: 100%;
@@ -21,7 +21,7 @@ export const StyledControl = styled(UnstyledButton)`
   }
 `;
 
-export const StyledLink = styled.a`
+export const Link = styled.a`
   font-weight: 500;
   display: block;
   cursor: pointer;
@@ -51,13 +51,13 @@ export const ChevronIcon = styled(IconChevronRight, transientConfig)`
   transform: ${({ $opened }) => ($opened ? "rotate(90deg)" : "none")};
 `;
 
-export const StyledBox = styled(Box)`
+export const Box = styled(MantineBox)`
   min-height: 220px;
   padding: ${({ theme }) => theme.spacing.md};
   background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white)};
 `;
 
-export const StyledInner = styled.div`
+export const Inner = styled.div`
   padding-top: ${({ theme }) => theme.spacing.sm}px;
   padding-bottom: ${({ theme }) => theme.spacing.sm}px;
 `;

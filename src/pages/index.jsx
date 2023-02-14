@@ -4,8 +4,8 @@ import { Button, Container, SimpleGrid, Text } from "@mantine/core";
 
 // components
 import { CategoryProducts } from "../components/app-card/category-products/category-products";
-import { HeaderSearch } from "../components/header";
-import { FooterSocial } from "../components/footer";
+import { HeaderSearch } from "../components/header/header";
+import { FooterSocial } from "../components/footer/footer";
 import { CategoryCarousel } from "../components/category-carousel";
 import { IndexCarousel } from "../components/index-carousel";
 

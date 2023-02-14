@@ -10,14 +10,14 @@ import * as S from "./styles"
 
 export function ProductsCarousel({ image, title, price, type, offer, id }) {
   return (
-    <S.StyledCard withBorder p={0}>
+    <S.Card withBorder p={0}>
       <Link href={`/produtos/${type}/${id}`}>
-        <S.StyledImage>
+        <S.Image>
           <Image src={image[0]} alt={image[0]} />
-        </S.StyledImage>
+        </S.Image>
       </Link>
 
-      <S.StyledTitle>
+      <S.Title>
         <div>
           <Tooltip label={title} color="orange" withArrow multiline>
             <Text lineClamp={1} weight={500} size="lg">
@@ -28,9 +28,9 @@ export function ProductsCarousel({ image, title, price, type, offer, id }) {
             {type}
           </Text>
         </div>
-      </S.StyledTitle>
+      </S.Title>
 
-      <S.StyledPrice>
+      <S.Price>
         <Group>
           <div>
             <Text size="22px" weight={600} sx={{ lineHeight: 1 }}>
@@ -46,7 +46,7 @@ export function ProductsCarousel({ image, title, price, type, offer, id }) {
             )}
           </div>
         </Group>
-      </S.StyledPrice>
-    </S.StyledCard>
+      </S.Price>
+    </S.Card>
   );
 }

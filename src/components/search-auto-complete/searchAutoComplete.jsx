@@ -46,7 +46,7 @@ export function SearchAutoComplete({ hiddenSeach }) {
   }, [termoDeBusca]);
 
   return (
-    <S.StyledSearch
+    <S.Search
       value={termoDeBusca}
       onChange={setTermoDeBusca}
       $hiddenSeach={hiddenSeach}

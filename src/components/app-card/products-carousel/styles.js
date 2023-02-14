@@ -1,8 +1,8 @@
 // vendors
 import styled from "@emotion/styled";
-import { Card, Group } from "@mantine/core";
+import { Card as MantineCard, Group } from "@mantine/core";
 
-export const StyledCard = styled(Card)`
+export const Card = styled(MantineCard)`
   background-color: ${({ theme }) =>
     theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[1]};
   height: 350px;
@@ -11,7 +11,7 @@ export const StyledCard = styled(Card)`
   padding: 0px;
 `;
 
-export const StyledImage = styled(Card.Section)`
+export const Image = styled(MantineCard.Section)`
   display: flex;
   height: 250px;
   overflow: hidden;
@@ -20,7 +20,7 @@ export const StyledImage = styled(Card.Section)`
     ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[1])};
 `;
 
-export const StyledTitle = styled(Group)`
+export const Title = styled(Group)`
   align-content: flex-start;
   justify-content: center;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const StyledTitle = styled(Group)`
   max-height: 30px;
 `;
 
-export const StyledPrice = styled(Card.Section)`
+export const Price = styled(MantineCard.Section)`
   padding: ${({ theme }) => theme.spacing.sm};
   border-top: 1px solid
     ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};

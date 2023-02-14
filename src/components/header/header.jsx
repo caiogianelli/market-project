@@ -5,11 +5,11 @@ import { IconHome, IconLogin } from "@tabler/icons";
 import { useState } from "react";
 
 // components
-import DarkTheme from "./dark-theme";
-import { NavbarNested } from "./navbar/navbar-nested";
-import { SetIndicator } from "./indicator";
-import { AuthenticationTitle } from "./create-account/authentication";
-import { SearchAutoComplete } from "./search-auto-complete/searchAutoComplete";
+import DarkTheme from "../dark-theme";
+import { NavbarNested } from "../navbar/navbar-nested";
+import { SetIndicator } from "../indicator";
+import { AuthenticationTitle } from "../create-account/authentication";
+import { SearchAutoComplete } from "../search-auto-complete/searchAutoComplete";
 
 // styles
 import * as S from "./styles"
@@ -19,8 +19,8 @@ export function HeaderSearch({ items, setItems }) {
   const [modal, setModal] = useState(false);
 
   return (
-    <S.StyledContainer>
-      <S.StyledHeader fixed>
+    <S.Container>
+      <S.Header fixed>
         <Group position="left">
           <Burger opened={opened} size="sm" onClick={() => setOpened(true)} />
         </Group>
@@ -58,7 +58,7 @@ export function HeaderSearch({ items, setItems }) {
             <DarkTheme />
           </Group>
         </Group>
-      </S.StyledHeader>
-    </S.StyledContainer>
+      </S.Header>
+    </S.Container>
   );
 }

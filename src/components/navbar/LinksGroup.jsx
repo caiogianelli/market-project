@@ -11,13 +11,13 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, cl
   const [opened, setOpened] = useState(initiallyOpened || false);
   const items = (hasLinks ? links : []).map((link) => (
     <Link key={link.label} href={link.link}>
-      <S.StyledLink>{link.label}</S.StyledLink>
+      <S.Link>{link.label}</S.Link>
     </Link>
   ));
 
   return (
     <>
-      <S.StyledControl onClick={() => setOpened((o) => !o)}>
+      <S.Control onClick={() => setOpened((o) => !o)}>
         <Group position="apart" spacing={0}>
           {link ? (
             <Link href={link || ""}>
@@ -39,7 +39,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, cl
 
           {hasLinks && <S.ChevronIcon size={14} stroke={1.5} $opened={opened} />}
         </Group>
-      </S.StyledControl>
+      </S.Control>
 
       {hasLinks && (
         <Collapse onClick={closeBar} in={opened}>
@@ -51,5 +51,5 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, cl
 }
 
 export function NavbarLinksGroup() {
-  return <S.StyledBox></S.StyledBox>;
+  return <S.Box></S.Box>;
 }

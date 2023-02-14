@@ -57,7 +57,7 @@ export function ProductDetails({ image, title, price, type, offer, id, descripti
           <S.Group>
             {image.map((img) => (
               <S.Btn onClick={() => setMinImage(img)} key={img}>
-                <S.Img src={img} alt={img} />
+                <Image src={img} alt={img} />
               </S.Btn>
             ))}
           </S.Group>

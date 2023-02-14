@@ -2,8 +2,8 @@
 import { Container, Text } from "@mantine/core";
 
 // components
-import { FooterSocial } from "../../../../components/footer";
-import { HeaderSearch } from "../../../../components/header";
+import { FooterSocial } from "../../../../components/footer/footer";
+import { HeaderSearch } from "../../../../components/header/header";
 import { getProduct, getProducts } from "../../../api/product";
 import { ProductDetails } from "../../../../components/app-card/product-details/product-details";
 

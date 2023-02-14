@@ -3,8 +3,8 @@ import { Container } from "@mantine/core";
 
 // components
 import { AppCart } from "../components/cart/app-cart";
-import { FooterSocial } from "../components/footer";
-import { HeaderSearch } from "../components/header";
+import { FooterSocial } from "../components/footer/footer";
+import { HeaderSearch } from "../components/header/header";
 
 const Cart = ({ items, setItems }) => {
   return (

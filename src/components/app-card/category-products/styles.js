@@ -1,9 +1,9 @@
 // vendors
 import styled from "@emotion/styled";
-import { Card, Group, Button } from "@mantine/core";
+import { Group, Card as MantineCard, Button as MantineButton, Image as MantineImage } from "@mantine/core";
 
 
-export const StyledCard = styled(Card)`
+export const Card = styled(MantineCard)`
   background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white)};
   cursor: pointer;
   height: 340px;
@@ -11,7 +11,7 @@ export const StyledCard = styled(Card)`
   padding: 0px 16px 16px 16px;
 `;
 
-export const StyledCardTitle = styled(Group)`
+export const CardTitle = styled(Group)`
   align-items: flex-start;
   height: 30px;
   display: inline-table;
@@ -19,7 +19,7 @@ export const StyledCardTitle = styled(Group)`
   margin-bottom: 5px;
 `;
 
-export const StyledImageSection = styled(Card.Section)`
+export const ImageSection = styled(MantineCard.Section)`
   display: flex;
   height: 200px;
   overflow: hidden;
@@ -29,7 +29,7 @@ export const StyledImageSection = styled(Card.Section)`
     ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
 `;
 
-export const StyledPriceContainer = styled(Card.Section)`
+export const PriceContainer = styled(MantineCard.Section)`
   padding: 8px;
   border-top: 1px solid
     ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
@@ -43,10 +43,13 @@ export const StyledPriceContainer = styled(Card.Section)`
   justify-content: center;
   align-items: center;
 `;
-export const StyledButton = styled(Button)`
+export const Button = styled(MantineButton)`
   border-radius: 4px;
   width: 100%;
   height: 35px;
   padding-left: 45px;
   padding-right: 45px;
 `;
+
+export const Image = styled(MantineImage)`
+`

@@ -41,12 +41,6 @@ export const Btn = styled(MantineButton)`
   }
 `;
 
-export const Img = styled(MantineImage)`
-  width: 250px;
-  height: 250px;
-  border-radius: 4px;
-`;
-
 export const Group = styled(MantineGroup)`
   margin: 10px;
   display: flex;

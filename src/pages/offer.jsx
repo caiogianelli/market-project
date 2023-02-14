@@ -2,8 +2,8 @@
 import { Container, SimpleGrid, Text } from "@mantine/core";
 
 // components
-import { HeaderSearch } from "../components/header";
-import { FooterSocial } from "../components/footer";
+import { HeaderSearch } from "../components/header/header";
+import { FooterSocial } from "../components/footer/footer";
 import { CategoryProducts } from "../components/app-card/category-products/category-products";
 
 // api
