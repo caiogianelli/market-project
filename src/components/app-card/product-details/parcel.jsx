@@ -1,4 +1,7 @@
+// vendors
 import { Text } from "@mantine/core";
+
+// components
 import { formatMoney } from "../../../utils/format-money";
 
 export function Parcel({ price }) {

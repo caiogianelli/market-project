@@ -1,8 +1,13 @@
-import styled from "@emotion/styled";
+// vendors
 import { Navbar, Group } from "@mantine/core";
 import { IconNotes, IconHome2, IconLock, IconPercentage } from "@tabler/icons";
+
+// components
 import { SearchAutoComplete } from "../search-auto-complete/searchAutoComplete";
 import { LinksGroup } from "./LinksGroup";
+
+// styles
+import * as S from "./styles"
 
 const mockdata = [
   {
@@ -33,11 +38,6 @@ const mockdata = [
   },
 ];
 
-const StyledInner = styled.div`
-  padding-top: ${({ theme }) => theme.spacing.sm}px;
-  padding-bottom: ${({ theme }) => theme.spacing.sm}px;
-`;
-
 export function NavbarNested({ closeBar, hiddenSeach }) {
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} closeBar={closeBar} />);
 
@@ -47,7 +47,7 @@ export function NavbarNested({ closeBar, hiddenSeach }) {
         <SearchAutoComplete hiddenSeach={hiddenSeach} />
 
         <Navbar.Section>
-          <StyledInner>{links}</StyledInner>
+          <S.Inner>{links}</S.Inner>
         </Navbar.Section>
       </Navbar>
     </Group>

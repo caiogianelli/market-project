@@ -1,73 +1,23 @@
+// vendors
 import { useState } from "react";
-import { Group, Box, Collapse, ThemeIcon, UnstyledButton } from "@mantine/core";
-import { IconChevronRight } from "@tabler/icons";
+import { Group, Box, Collapse, ThemeIcon } from "@mantine/core";
 import Link from "next/link";
-import styled from "@emotion/styled";
-import { transientConfig } from "../../utils/styled-transient-config";
 
-const StyledControl = styled(UnstyledButton)`
-  font-weight: 700;
-  display: block;
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing.xs}px 0px;
-  color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black)};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-
-  &:hover {
-    background-color: ${({ theme }) =>
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[0]};
-    color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.black)};
-  }
-`;
-
-const StyledLink = styled.a`
-  font-weight: 500;
-  display: block;
-  cursor: pointer;
-  text-decoration: none;
-  padding-left: 30px;
-  margin-left: 30px;
-
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-
-  padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.md}px`};
-
-  color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7])};
-
-  border-left: 1px solid
-    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
-
-  &:hover {
-    background-color: ${({ theme }) =>
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[0]};
-
-    color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.black)};
-  }
-`;
-
-const ChevronIcon = styled(IconChevronRight, transientConfig)`
-  transition: transform 200ms ease;
-  transform: ${({ $opened }) => ($opened ? "rotate(90deg)" : "none")};
-`;
-
-const StyledBox = styled(Box)`
-  min-height: 220px;
-  padding: ${({ theme }) => theme.spacing.md};
-  background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white)};
-`;
+// style
+import * as S from "./styles"
 
 export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, closeBar }) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const items = (hasLinks ? links : []).map((link) => (
     <Link key={link.label} href={link.link}>
-      <StyledLink>{link.label}</StyledLink>
+      <S.Link>{link.label}</S.Link>
     </Link>
   ));
 
   return (
     <>
-      <StyledControl onClick={() => setOpened((o) => !o)}>
+      <S.Control onClick={() => setOpened((o) => !o)}>
         <Group position="apart" spacing={0}>
           {link ? (
             <Link href={link || ""}>
@@ -87,9 +37,9 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, cl
             </Box>
           )}
 
-          {hasLinks && <ChevronIcon size={14} stroke={1.5} $opened={opened} />}
+          {hasLinks && <S.ChevronIcon size={14} stroke={1.5} $opened={opened} />}
         </Group>
-      </StyledControl>
+      </S.Control>
 
       {hasLinks && (
         <Collapse onClick={closeBar} in={opened}>
@@ -101,5 +51,5 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links, link, cl
 }
 
 export function NavbarLinksGroup() {
-  return <StyledBox></StyledBox>;
+  return <S.Box></S.Box>;
 }

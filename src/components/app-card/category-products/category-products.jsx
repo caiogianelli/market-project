@@ -1,57 +1,14 @@
-import styled from "@emotion/styled";
-import { Card, Image, Text, Group, Badge, Button, Tooltip } from "@mantine/core";
+// vendors
+import { Text, Badge, Tooltip } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import { IconCheck, IconShoppingCartPlus } from "@tabler/icons";
 import Link from "next/link";
-import { formatMoney } from "../../utils/format-money";
 
-const StyledCard = styled(Card)`
-  background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white)};
-  cursor: pointer;
-  height: 340px;
-  margin-top: 20px;
-  padding: 0px 16px 16px 16px;
-`;
+// components
+import { formatMoney } from "../../../utils/format-money";
 
-const StyledCardTitle = styled(Group)`
-  align-items: flex-start;
-  height: 30px;
-  display: inline-table;
-  margin-top: 5px;
-  margin-bottom: 5px;
-`;
-
-const StyledImageSection = styled(Card.Section)`
-  display: flex;
-  height: 200px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid
-    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
-`;
-
-const StyledPriceContainer = styled(Card.Section)`
-  padding: 8px;
-  border-top: 1px solid
-    ${({ theme }) => (theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3])};
-  height: 35px;
-  margin-bottom: 5px;
-  gap: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-`;
-const StyledButton = styled(Button)`
-  border-radius: 4px;
-  width: 100%;
-  height: 35px;
-  padding-left: 45px;
-  padding-right: 45px;
-`;
+// styles
+import * as S from './styles'
 
 export function CategoryProducts({ image, title, price, type, offer, id, description, items, setItems }) {
   function addToCart() {
@@ -79,14 +36,14 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
   }
 
   return (
-    <StyledCard withBorder>
-      <StyledImageSection>
+    <S.Card withBorder>
+      <S.ImageSection>
         <Link href={`/produtos/${type}/${id}`}>
-          <Image src={image[0]} alt={image[0]} />
+          <S.Image src={image[0]} alt={image[0]} />
         </Link>
-      </StyledImageSection>
+      </S.ImageSection>
 
-      <StyledCardTitle>
+      <S.CardTitle>
         <div>
           <Tooltip
             multiline
@@ -105,19 +62,19 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
             {type}
           </Text>
         </div>
-      </StyledCardTitle>
+      </S.CardTitle>
 
-      <StyledPriceContainer>
+      <S.PriceContainer>
         <div>
           <Text size="xl" weight={500} sx={{ lineHeight: 1 }}>
             R$ {formatMoney(price)}
           </Text>
         </div>
         <div>{offer != 0 && <Badge variant="outline">{offer} % OFF</Badge>}</div>
-      </StyledPriceContainer>
+      </S.PriceContainer>
 
-      <StyledPriceContainer>
-        <StyledButton
+      <S.PriceContainer>
+        <S.Button
           onClick={() => {
             showNotification({
               icon: <IconCheck />,
@@ -128,8 +85,8 @@ export function CategoryProducts({ image, title, price, type, offer, id, descrip
         >
           Adicionar
           {<IconShoppingCartPlus size={18} style={{ marginLeft: "10px" }} />}
-        </StyledButton>
-      </StyledPriceContainer>
-    </StyledCard>
+        </S.Button>
+      </S.PriceContainer>
+    </S.Card>
   );
 }

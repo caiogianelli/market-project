@@ -1,9 +1,12 @@
+// vendors
 import { useRef } from "react";
+import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel } from "@mantine/carousel";
-import { ProductsImage } from "./app-card/products-image";
 import { Text } from "@mantine/core";
-import Link from "next/link";
+
+// components
+import { ProductsImage } from "./app-card/products-image/products-image";
 
 export function CategoryCarousel({ category }) {
   const autoplay = useRef(Autoplay({ delay: 1500 }));

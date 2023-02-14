@@ -1,6 +1,9 @@
+// vendors
 import { ActionIcon, Avatar, Group, Text } from "@mantine/core";
 import { IconMinus, IconPlus, IconTrash } from "@tabler/icons";
 import Link from "next/link";
+
+// components
 import { formatMoney } from "../../utils/format-money";
 
 export function CartItem({ item, setItems }) {
@@ -56,6 +59,7 @@ export function CartItem({ item, setItems }) {
       <td width={570}>
         <Group spacing="sm" style={{ flexWrap: "inherit" }}>
           <Avatar size={40} src={item.image} radius={5} />
+
           <div>
             <Text size="sm" weight={500} lineClamp={2}>
               <Link href={`/produtos/${item.type}/${item.id}`}>
@@ -63,6 +67,7 @@ export function CartItem({ item, setItems }) {
               </Link>
             </Text>
           </div>
+          
         </Group>
       </td>
 
@@ -71,7 +76,9 @@ export function CartItem({ item, setItems }) {
           <ActionIcon style={{ display: "contents" }} onClick={decreaseAmount}>
             <IconMinus stroke={1.5} color="orange" size={18} style={{ marginRight: "10px" }} />
           </ActionIcon>
+
           {item.amount}
+
           <ActionIcon style={{ display: "contents" }} onClick={increaseAmount}>
             <IconPlus
               stroke={1.5}
@@ -82,11 +89,13 @@ export function CartItem({ item, setItems }) {
           </ActionIcon>
         </Text>
       </td>
+
       <td align="center" width={150}>
         <Text size="sm" weight={500} style={{ minWidth: "70px" }}>
           {formatMoney(item.price * item.amount)} R$
         </Text>
       </td>
+      
       <td align="center" style={{ width: "30px" }}>
         <ActionIcon onClick={removeItem}>
           <IconTrash stroke={1.5} color="orange" />

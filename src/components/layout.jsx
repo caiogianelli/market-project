@@ -1,6 +1,6 @@
-import { Container } from "@mantine/core";
-import { FooterSocial } from "./footer";
-import { HeaderSearch } from "./header";
+// components
+import { FooterSocial } from "./footer/footer";
+import { HeaderSearch } from "./header/header";
 
 export function Layout({ items, setItems, children }) {
   return (

@@ -1,7 +1,12 @@
+// vendors
 import { Container, SimpleGrid, Text } from "@mantine/core";
-import { CategoryProducts } from "../../../components/app-card/category-products";
-import { FooterSocial } from "../../../components/footer";
-import { HeaderSearch } from "../../../components/header";
+
+// components
+import { CategoryProducts } from "../../../components/app-card/category-products/category-products";
+import { FooterSocial } from "../../../components/footer/footer";
+import { HeaderSearch } from "../../../components/header/header";
+
+// api
 import { getAllCategories, getCategoryProducts } from "../../api/product";
 
 const Category = ({ products, items, setItems }) => {

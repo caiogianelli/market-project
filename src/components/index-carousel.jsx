@@ -1,21 +1,10 @@
-import styled from "@emotion/styled";
+// vendors
 import { Carousel } from "@mantine/carousel";
 import emblaCarouselAutoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
-import { ProductsCarousel } from "./app-card/products-carousel";
 
-const S = {};
-
-S.Carousel = styled(Carousel)`
-  & .mantine-Carousel-indicators {
-    background-color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.colors.dark[7])};
-  }
-  & .mantine-Carousel-control {
-    background-color: ${({ theme }) =>
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.dark[2]};
-    color: ${({ theme }) => (theme.colorScheme === "dark" ? theme.white : theme.white)};
-  }
-`;
+// components
+import { ProductsCarousel } from "./app-card/products-carousel/products-carousel";
 
 export function IndexCarousel({ products, items, setItems }) {
   const autoplay = useRef(emblaCarouselAutoplay({ delay: 4000 }));

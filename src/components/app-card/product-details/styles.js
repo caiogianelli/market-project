@@ -1,3 +1,4 @@
+// vendors
 import styled from "@emotion/styled";
 import {
   Card as MantineCard,
@@ -38,12 +39,6 @@ export const Btn = styled(MantineButton)`
   &:hover {
     background-color: #fd7d1493;
   }
-`;
-
-export const Img = styled(MantineImage)`
-  width: 250px;
-  height: 250px;
-  border-radius: 4px;
 `;
 
 export const Group = styled(MantineGroup)`

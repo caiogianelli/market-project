@@ -1,13 +1,18 @@
-import { HeaderSearch } from "../components/header";
-import { FooterSocial } from "../components/footer";
-import { Button, Container, SimpleGrid, Text } from "@mantine/core";
-import { getProducts } from "./api/product";
-import { CategoryProducts } from "../components/app-card/category-products";
+// vendors
 import { useState } from "react";
+import { Button, Container, SimpleGrid, Text } from "@mantine/core";
+
+// components
+import { CategoryProducts } from "../components/app-card/category-products/category-products";
+import { HeaderSearch } from "../components/header/header";
+import { FooterSocial } from "../components/footer/footer";
 import { CategoryCarousel } from "../components/category-carousel";
 import { IndexCarousel } from "../components/index-carousel";
 
-export default function Home({ products, items, setItems }) {
+// api
+import { getProducts } from "./api/product";
+
+function Home({ products, items, setItems }) {
   const [itemsLimit, setItemsLimit] = useState(4);
 
   let categories = [];
@@ -91,6 +96,8 @@ export default function Home({ products, items, setItems }) {
     </div>
   );
 }
+
+export default Home
 
 export async function getStaticProps() {
   const products = getProducts();

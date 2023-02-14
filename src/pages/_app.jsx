@@ -1,9 +1,11 @@
-import Head from "next/head";
-import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
-import "../styles/globals.css";
-import { useLocalStorage } from "@mantine/hooks";
+// vendors
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "@mantine/hooks";
+import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
+import Head from "next/head";
+
+// components
 import { RouterTransition } from "../components/router-transition";
 
 export default function App(props) {

@@ -1,3 +1,4 @@
+// vendors
 import { Indicator, ActionIcon } from "@mantine/core";
 import Link from "next/link";
 import { IconShoppingCart } from "@tabler/icons";
@@ -8,6 +9,7 @@ export function SetIndicator({ items }) {
   for (const quantidade of contador) {
     count += quantidade;
   }
+  
   return (
     <Indicator
       showZero={false}
